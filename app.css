@@ -1,0 +1,41 @@
+.transaction {
+  border-bottom: 1px solid lightgray;
+}
+
+.transaction__icon {
+  width: 50px;
+  height: 70px;
+  line-height: 70px;
+}
+
+.transaction__icon .fa {
+  color: #fff;
+  padding: 5px 7px;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+.transaction_income .transaction__title {
+  color: green;
+}
+
+.transaction_expense .transaction__title {
+  color: red;
+}
+
+.transaction_income .transaction__icon .fa {
+  background: green;
+}
+
+.transaction_expense .transaction__icon .fa {
+  background: red;
+}
+
+.transaction__summ {
+  font-size: 20px;
+  line-height: 70px;
+}
+
+.transaction__details {
+  display: flex;
+}
