@@ -2,6 +2,7 @@ const createRequest = (options = {}) => {
   const f = function () {},
     {
       method = 'GET',
+      headers = {},
       success = f,
       error = f,
       callback = f,
@@ -27,8 +28,10 @@ const createRequest = (options = {}) => {
     callback.call( this, err );
   };
 
+  xhr.withCredentials = true;
+
   if ( method === 'GET' ) {
-    url += Object.entries( data )
+    url += '?' + Object.entries( data )
       .map(([ key, value ]) => `${key}=${value}` )
       .join( '&' );
   }

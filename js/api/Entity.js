@@ -1,7 +1,8 @@
 class Entity {
 
   static get HOST() {
-    return 'https://netology-bhj-diploma.herokuapp.com'
+    // return 'https://netology-bhj-diploma.herokuapp.com';
+    return 'http://localhost:8000';
   }
 
   constructor( attributes = {}) {
@@ -21,9 +22,9 @@ class Entity {
   static create( data, callback = f => f ) {
     return createRequest({
       url: this.HOST + this.URL,
-      method: 'PUT',
+      method: 'POST',
       responseType: 'json',
-      data,
+      data: Object.assign({ _method: 'PUT' }, data ),
       callback
     });
   }

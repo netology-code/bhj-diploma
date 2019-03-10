@@ -45,7 +45,7 @@ describe("Класс Entity", function() {
       expect(xhr).to.be.an.instanceof(XMLHttpRequest);
     });
 
-    it('Создаёт PUT-запрос', () => {
+    it('Создаёт POST-запрос', () => {
       const xhr = Entity.create();
 
       expect(xhr.requestMethod).to.be.equals( 'PUT' );

@@ -1,12 +1,48 @@
 class User extends Entity {
 
+  static onLogin( user ) {
+    localStorage[ 'user' ] = JSON.stringify( user );
+  }
+
+  static onLogout() {
+    delete localStorage[ 'user' ];
+  }
+
+  static current() {
+    const data = localStorage[ 'user' ];
+    return data && JSON.parse( data );
+  }
+
+  static fetch( data, callback = f => f ) {
+    return createRequest({
+      url: this.HOST + this.URL + '/current',
+      method: 'POST',
+      responseType: 'json',
+      data,
+      callback: ( err, response ) => {
+        if ( response && response.user ) {
+          this.onLogin( response.user );
+        }
+        else {
+          this.onLogout();
+        }
+        callback.call( this, err, response );
+      }
+    });
+  }
+
   static login( data, callback = f => f ) {
     return createRequest({
       url: this.HOST + this.URL + '/login',
       method: 'POST',
       responseType: 'json',
       data,
-      callback
+      callback: ( err, response ) => {
+        if ( response && response.user ) {
+          this.onLogin( response.user );
+        }
+        callback.call( this, err, response );
+      }
     });
   }
 
@@ -16,7 +52,12 @@ class User extends Entity {
       method: 'POST',
       responseType: 'json',
       data,
-      callback
+      callback: ( err, response ) => {
+        if ( response && response.user ) {
+          this.onLogin( response.user );
+        }
+        callback.call( this, err, response );
+      }
     });
   }
 
@@ -26,7 +67,12 @@ class User extends Entity {
       method: 'POST',
       responseType: 'json',
       data,
-      callback
+      callback: ( err, response ) => {
+        if ( response && response.success ) {
+          this.onLogout();
+        }
+        callback.call( this, err, response );
+      }
     });
   }
 }
