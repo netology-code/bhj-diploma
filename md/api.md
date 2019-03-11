@@ -47,12 +47,23 @@ const xhr = createRequest({
   });
 ```
 
+<details>
+
 ### 1. Возвращает XHR
+
+<summary>
 
 Константа *xhr* в данном примере содержит объект *XHMLHttpRequest*, 
 который возвращает функция *createRequest*.
 
+</summary>
+</details>
+
+<details>
+
 ### 2. Параметр data
+
+<summary>
 
     1. При параметре *method* = GET, данные из объекта *data* должны передаваться
     в строке адреса. Например листинг:
@@ -104,7 +115,14 @@ xhr.open( 'GET', 'https://example.com' );
 xhr.send( formData );
 ```
 
+</summary>
+</details>
+
+<details>
+
 ### 3. callback
+
+<summary>
 
 В случае успешного выполнения кода, необходимо вызвать функцию, заданную
 в *callback* и передать туда данные:
@@ -137,6 +155,9 @@ const xhr = createRequest({
     }
   });
 ```
+
+</summary>
+</details>
 
 ## Entity
 
