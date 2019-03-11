@@ -138,6 +138,10 @@ const xhr = createRequest({
   });
 ```
 
+4. withCredentials
+
+У возвращаемого объекта всегда свойство *withCredentials* задано в *true*
+
 ## Entity
 
 Это базовый класс, от которого будут наследоваться классы 
@@ -225,7 +229,6 @@ class Entity {
 Пример вызова:
 
 ```javascript
-// вытащить
 Entity.get( 21, { hello: 'kitty' }, function ( err, response ) {
   // ... получили ответ
 });
@@ -241,7 +244,6 @@ Entity.get( 21, { hello: 'kitty' }, function ( err, response ) {
 Метод *remove* принимает __3__ аргумента: *id*, *data* и *callback*.
 К данным, передаваемых в параметре *data*, необходимо добавить 
 свойство *_method* со значением *DELETE*:
-
 
 ```javascript
 const data = {
@@ -531,3 +533,75 @@ User.login( data, ( err, response ) => {
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
+
+## Подсказки и советы
+
+<details>
+
+<summary>Показать</summary>
+
+### Дополнительные свойства. Иммутабельность
+
+Для добавления дополнительных свойств к объекту *data* в методах
+*Entity.create* и *Entity.remove* используйте метод 
+[Object.assign](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/assign):
+
+```javascript
+const data = {
+      hello: 'kitty'
+    },
+    modifiedData = Object.assign({ _method: 'PUT' }, data );
+console.log( modifiedData ); // { hello: 'kitty', _method: 'PUT' }
+```
+
+### Ошибки в createRequest
+
+Иногда сетевой запрос, сформированный с помощью *XMLHttpRequest* 
+может выбросить критическую ошибку, которая остановит выполнение 
+вашего приложения. Пользуйтесь в этом случае конструкцией *try/catch*:
+
+```javascript
+const createRequest = options => {
+  // ...
+  const xhr = new XMLHttpRequest;
+  // ...
+  try {
+    xhr.open( method, url );
+    xhr.send( data );
+  }
+  catch ( e ) {
+    // перехват сетевой ошибки
+    callback( e );
+  }
+}
+```
+
+### callback в методах класса User
+
+Учитывая то, что вам необходимо выполнять дополнительные действия в
+классе *User*, такие как сохранение или удаление данных авторизованного
+пользователя в локальном хранилище (localStorage), *callback*-параметр
+нельзя напрямую передавать в *createRequest*:
+
+```javascript
+class User {
+  static fetch( data, callback ) {
+    // ...
+    const xhr = createRequest({
+      // ...
+      // задаём функцию обратного вызова
+      callback( err, response ) {
+        if ( response && response.user ) {
+          User.setCurrent( response.user );
+        }
+        // ...
+        // вызываем параметр, переданный в метод fetch
+        callback( err, response );
+      }
+      // ...
+    });
+  }
+}
+```
+
+</details>
