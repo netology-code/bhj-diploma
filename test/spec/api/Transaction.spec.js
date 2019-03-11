@@ -4,7 +4,7 @@ describe("Класс Transaction", function() {
     expect(Transaction).to.be.a('function');
   });
 
-  it("Создаёт экземпляр Category", function() {
+  it("Создаёт экземпляр Transaction", function() {
     expect(new Transaction).to.be.an.instanceof(Transaction);
   });
 

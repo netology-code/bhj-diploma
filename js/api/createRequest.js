@@ -31,9 +31,12 @@ const createRequest = (options = {}) => {
   xhr.withCredentials = true;
 
   if ( method === 'GET' ) {
-    url += '?' + Object.entries( data )
+    const urlParams = Object.entries( data )
       .map(([ key, value ]) => `${key}=${value}` )
       .join( '&' );
+    if ( urlParams ) {
+      url += '?' + urlParams;
+    }
   }
   else {
     requestData = Object.entries( data )

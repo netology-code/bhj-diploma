@@ -47,9 +47,14 @@ class AccountsWidget {
 
   selectAccount( element ) {
     if ( this.currentAccountId ) {
-      this.element
-        .querySelector( `.account[data-id="${this.currentAccountId}"]` )
-        .classList.remove( 'active' );
+      const account = this.element
+        .querySelector( `.account[data-id="${this.currentAccountId}"]` );
+      if (account) {
+        account.classList.remove( 'active' );
+      }
+      else {
+        this.currentAccountId = null;
+      }
     }
 
     element.classList.add( 'active' );
@@ -63,16 +68,22 @@ class AccountsWidget {
     });
   }
 
+  getAccountHTML( item ) {
+    return `
+      <li class="account" data-id="${ item.id }">
+          <a href="#">
+              ${ item.name } / ${ item.sum } ₽
+          </a>
+      </li>
+    `;
+  }
+
   renderItem( item ) {
     const { name, id } = item,
       sum = item.sum.toLocaleString( 'en' ),
-      html = `
-        <li class="account" data-id="${ id }">
-            <a href="#">
-                ${ name } / ${ sum } ₽
-            </a>
-        </li>
-      `;
+      html = this.getAccountHTML({
+        name, id, sum
+      });
     this.element.insertAdjacentHTML( 'beforeend', html );
   }
 }

@@ -21,7 +21,7 @@ class App {
 
   static initPages() {
     this.pages = {
-      'transactions' : new TransactionsPage( this.content )
+      transactions : new TransactionsPage( this.content )
     }
   }
 
@@ -40,11 +40,22 @@ class App {
     if ( state === 'user-logged' ) {
       this.update();
     }
+    if ( state === 'init' ) {
+      this.clear();
+    }
+  }
+
+  static clear() {
+    this.pages.transactions.clear();
   }
 
   static update() {
     this.updateAccounts();
     this.updateWidgets();
+    this.updatePages();
+  }
+
+  static updatePages() {
     this.pages.transactions.update();
   }
 
@@ -71,5 +82,3 @@ class App {
     this.createExpenseForm = new CreateTransactionForm( document.querySelector( '#new-expense-form' ));
   }
 }
-
-App.init();

@@ -33,7 +33,7 @@ describe("Класс Entity", function() {
     it('Обращается по адресу, определённому в свойстве HOST', () => {
       const xhr = Entity.list();
 
-      expect(xhr.requestURL).to.be.equals( Entity.HOST);
+      expect(xhr.requestURL).to.be.equals( Entity.HOST );
     });
   });
 
@@ -48,34 +48,13 @@ describe("Класс Entity", function() {
     it('Создаёт POST-запрос', () => {
       const xhr = Entity.create();
 
-      expect(xhr.requestMethod).to.be.equals( 'PUT' );
+      expect(xhr.requestMethod).to.be.equals( 'POST' );
     });
 
     it('Обращается по адресу, определённому в свойстве HOST', () => {
       const xhr = Entity.create();
 
       expect(xhr.requestURL).to.be.equals( Entity.HOST );
-    });
-  });
-
-  describe('Метод Entity.update()', () => {
-
-    it('Возвращает XHR', () => {
-      const xhr = Entity.update();
-
-      expect(xhr).to.be.an.instanceof(XMLHttpRequest);
-    });
-
-    it('Создаёт POST-запрос', () => {
-      const xhr = Entity.update();
-
-      expect(xhr.requestMethod).to.be.equals( 'POST' );
-    });
-
-    it('Обращается по адресу, определённому в свойстве HOST', () => {
-      const xhr = Entity.update();
-
-      expect(xhr.requestURL).to.be.equals( Entity.HOST  + '/' );
     });
   });
 
@@ -90,7 +69,7 @@ describe("Класс Entity", function() {
     it('Создаёт DELETE-запрос', () => {
       const xhr = Entity.remove();
 
-      expect(xhr.requestMethod).to.be.equals( 'DELETE' );
+      expect(xhr.requestMethod).to.be.equals( 'POST' );
     });
 
     it('Обращается по адресу, определённому в свойстве HOST', () => {

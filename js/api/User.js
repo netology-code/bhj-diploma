@@ -1,10 +1,10 @@
-class User extends Entity {
+class User {
 
-  static onLogin( user ) {
+  static setCurrent(user ) {
     localStorage[ 'user' ] = JSON.stringify( user );
   }
 
-  static onLogout() {
+  static unsetCurrent() {
     delete localStorage[ 'user' ];
   }
 
@@ -16,15 +16,15 @@ class User extends Entity {
   static fetch( data, callback = f => f ) {
     return createRequest({
       url: this.HOST + this.URL + '/current',
-      method: 'POST',
+      method: 'GET',
       responseType: 'json',
       data,
       callback: ( err, response ) => {
         if ( response && response.user ) {
-          this.onLogin( response.user );
+          this.setCurrent( response.user );
         }
         else {
-          this.onLogout();
+          this.unsetCurrent();
         }
         callback.call( this, err, response );
       }
@@ -39,7 +39,7 @@ class User extends Entity {
       data,
       callback: ( err, response ) => {
         if ( response && response.user ) {
-          this.onLogin( response.user );
+          this.setCurrent( response.user );
         }
         callback.call( this, err, response );
       }
@@ -54,7 +54,7 @@ class User extends Entity {
       data,
       callback: ( err, response ) => {
         if ( response && response.user ) {
-          this.onLogin( response.user );
+          this.setCurrent( response.user );
         }
         callback.call( this, err, response );
       }
@@ -69,7 +69,7 @@ class User extends Entity {
       data,
       callback: ( err, response ) => {
         if ( response && response.success ) {
-          this.onLogout();
+          this.unsetCurrent();
         }
         callback.call( this, err, response );
       }
@@ -77,4 +77,5 @@ class User extends Entity {
   }
 }
 
+User.HOST = Entity.HOST;
 User.URL = '/user';

@@ -4,12 +4,8 @@ describe("Класс User", function() {
     expect(User).to.be.a('function');
   });
 
-  it("Создаёт экземпляр Category", function() {
+  it("Создаёт экземпляр User", function() {
     expect(new User).to.be.an.instanceof(User);
-  });
-
-  it('Наследуется от Entity', () => {
-    expect(new User).to.be.an.instanceof(Entity);
   });
 
   it('Свойство HOST имеет значение Entity.HOST', () => {

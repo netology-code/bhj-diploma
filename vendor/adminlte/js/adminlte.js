@@ -1,4 +1,4 @@
-/*! AdminLTE app.js
+/*! AdminLTE App.js
 * ================
 * Main JS application file for AdminLTE v2. This file
 * should be included in all pages. It controls some layout
@@ -179,7 +179,7 @@ throw new Error('AdminLTE requires jQuery')
         expanding: 'expanding.boxwidget',
         expanded: 'expanded.boxwidget',
         removing: 'removing.boxwidget',
-        removed: 'removed.boxwidget'        
+        removed: 'removed.boxwidget'
     };
 
   // BoxWidget Class Definition
