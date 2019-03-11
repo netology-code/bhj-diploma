@@ -32,7 +32,7 @@ const xhr = createRequest({
       username: 'ivan@poselok.ru',
       password: 'odinodin'
     },
-    responseType: 'json', // формат, в котором необходимо 
+    responseType: 'json', // формат, в котором необходимо выдать результат
     method: 'GET', // метод запроса
     /*
       Функция, которая сработает после запроса.
