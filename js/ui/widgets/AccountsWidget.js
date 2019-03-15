@@ -20,7 +20,7 @@ class AccountsWidget {
       const selectedAccount = e.target.closest( '.account' );
 
       if ( selectedAccount ) {
-        this.selectAccount( selectedAccount );
+        this.onSelectAccount( selectedAccount );
       }
     });
   }
@@ -45,7 +45,7 @@ class AccountsWidget {
     [...this.element.querySelectorAll( '.account' )].forEach( item => item.remove());
   }
 
-  selectAccount( element ) {
+  onSelectAccount( element ) {
     if ( this.currentAccountId ) {
       const account = this.element
         .querySelector( `.account[data-id="${this.currentAccountId}"]` );

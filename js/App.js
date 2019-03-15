@@ -4,11 +4,12 @@ class App {
     this.element = document.querySelector( '.app' );
     this.content = document.querySelector( '.content-wrapper' );
 
-    Sidebar.init();
-
     this.initPages();
     this.initForms();
     this.initWidgets();
+    this.initModals();
+
+    Sidebar.init();
 
     this.initUser();
   }
@@ -25,8 +26,23 @@ class App {
     }
   }
 
+  static initModals() {
+    this.modals = {
+      register: new Modal( document.querySelector( '#modal-register' )),
+      login: new Modal( document.querySelector( '#modal-login' )),
+    };
+  }
+
+  static getModal( modalName ) {
+    return this.modals[ modalName ];
+  }
+
+  static getPage( pageName ) {
+    return this.pages[ pageName ];
+  }
+
   static showPage( pageName, options ) {
-    const page = this.pages[ pageName ];
+    const page = this.getPage( pageName );
     page.render( options );
   }
 
@@ -46,7 +62,7 @@ class App {
   }
 
   static clear() {
-    this.pages.transactions.clear();
+    this.getPage( 'transactions' ).clear();
   }
 
   static update() {
@@ -56,7 +72,7 @@ class App {
   }
 
   static updatePages() {
-    this.pages.transactions.update();
+    this.getPage( 'transactions' ).update();
   }
 
   static updateAccounts() {
@@ -75,10 +91,12 @@ class App {
   }
 
   static initForms() {
-    this.loginForm = new LoginForm( document.querySelector( '#login-form' ));
-    this.registerForm = new RegisterForm( document.querySelector( '#register-form' ));
-    this.createAccountForm = new CreateAccountForm( document.querySelector( '#new-account-form' ));
-    this.createIncomeForm = new CreateTransactionForm( document.querySelector( '#new-income-form' ));
-    this.createExpenseForm = new CreateTransactionForm( document.querySelector( '#new-expense-form' ));
+    this.forms = {
+      login: new LoginForm(document.querySelector('#login-form')),
+      register: new RegisterForm(document.querySelector('#register-form')),
+      createAccount: new CreateAccountForm(document.querySelector('#new-account-form')),
+      createIncome: new CreateTransactionForm(document.querySelector('#new-income-form')),
+      crreateExpense: new CreateTransactionForm(document.querySelector('#new-expense-form'))
+    }
   }
 }
