@@ -66,28 +66,29 @@ class App {
   }
 
   static update() {
-    this.updateAccounts();
     this.updateWidgets();
     this.updatePages();
+  }
+
+  static getWidget( widgetName ) {
+    return this.widgets[ widgetName ];
   }
 
   static updatePages() {
     this.getPage( 'transactions' ).update();
   }
 
-  static updateAccounts() {
-    this.accountsWidget.update();
-  }
-
   static initWidgets() {
-    this.accountsWidget = new AccountsWidget( document.querySelector( '.accounts-panel' ));
-    this.transactionsWidget = new TransactionsWidget( document.querySelector( '.transactions-panel' ));
-    this.userWidget = new UserWidget( document.querySelector( '.user-panel' ));
+    this.widgets = {
+      accounts: new AccountsWidget( document.querySelector( '.accounts-panel' )),
+      transactions: new TransactionsWidget( document.querySelector( '.transactions-panel' )),
+      user: new UserWidget( document.querySelector( '.user-panel' ))
+    };
   }
 
   static updateWidgets() {
-    this.accountsWidget.update();
-    this.userWidget.update();
+    this.getWidget( 'accounts' ).update();
+    this.getWidget( 'user' ).update();
   }
 
   static initForms() {

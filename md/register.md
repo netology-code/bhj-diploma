@@ -3,7 +3,7 @@
 ## Общее описание
 
 Вам необходимо реализовать класс *RegisterForm*
-(файл *js/ui/forms/RegisterForm.js*)
+(файл *js/ui/forms/RegisterForm.js*) и метод *App.initUser*
 
 *RegisterForm* наследуется от класса *AsyncForm*. По факту необходимо 
 реализовать только метод *onSubmit*
@@ -17,4 +17,6 @@
 4. Находит окно, в котором находится форма и закрывает его 
 (через метод *Modal.close*)
 
+## App.initUser
 
+Получает текущего пользователя

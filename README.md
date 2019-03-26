@@ -2,6 +2,8 @@
 
 ## Описание
 
+Вам необходимо разработать класс для
+
 ## С чего начать
 
 ### Процесс выполнения
@@ -33,32 +35,31 @@
 
 Для удобства работы весь проект разбит на файлы,
 каждый из которых в конченом счете будет 
-занимать от 5 до 100 строк
+занимать от 5 до 100 строк. В каждом файле содержится только
+один класс, что упрощает навигацию по проекту.
 
 - js/
-    - api/
-        - Account.js
-        - Category.js
-        - createRequest.js
-        - Entity.js
-        - Transaction.js
+    - __api/__ (Связь с сервером, сетевые запросы)
+        - __Account.js__ (управление счетами)
+        - __createRequest.js__ (доработка XHR)
+        - __Entity.js__ (Базовый класс для счетов, пользователей и расходов/доходов)
+        - __Transaction.js__ (управление доходами и расходами пользователя)
         - User.js
     - ui/
-        - forms/
-            - AsyncForm.js
-            - CreateAccountForm.js
-            - CreateTransactionForm.js
-            - LoginForm.js
-            - RegisterForm.js
-        - pages/
-            TransactionPage.js
+        - forms/ (формы приложения)
+            - __AsyncForm.js__ (Базовый класс для всех форм. Используется преимущественно во всплывающих окнах)
+            - __CreateAccountForm.js__ (форма создания нового счёта)
+            - __CreateTransactionForm.js__ (форма создания нового расхода/дохода)
+            - __LoginForm.js__ (форма входа)
+            - __RegisterForm.js__ (форма регистрации)
+        - pages/ (страницы приложения)
+            - __TransactionPage.js__ (страница расходов и доходов конкретного счёта)
         - widgets/
-            - AccountsWidget.js
-            - TransactionsWidget.js
-            - UserWidget.js
-        - Modal.js
-        - Sidebar.js
-    - App.js
+            - __AccountsWidget.js__ (виджет управления счетами)
+            - __TransactionsWidget.js__ (виджет управления расходами и доходами)
+            - __UserWidget.js__ (виджет текущего пользователя)
+        - __Modal.js (базовый класс для всех всплывающих окон)
+        - __Sidebar.js__ (класс управления боковой колонкой)
+    - App.js (класс приложения)
     
-
 ## Критерии сдачи

@@ -4,7 +4,7 @@ class CreateAccountForm extends AsyncForm {
       if ( !response.success ) {
         return
       }
-      App.updateAccounts();
+      App.getWidget( 'accounts' ).update();
       this.element.reset();
 
       const modal = new Modal( this.element.closest( '.modal' ));
