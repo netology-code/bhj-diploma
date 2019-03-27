@@ -1,3 +1,8 @@
+/**
+ * Класс Entity - базовый для взаимодействия с сервером.
+ * Имеет свойство URL, равно пустой строке.
+ * Имеет свойство HOST, равно 'https://netology-bhj-diploma.herokuapp.com'.
+ * */
 class Entity {
 
   static get HOST() {
@@ -5,10 +10,11 @@ class Entity {
     return 'http://localhost:8000';
   }
 
-  constructor( attributes = {}) {
-    this.attributes = attributes;
-  }
-
+  /**
+   * Запрашивает с сервера список данных.
+   * Это могут быть счета или доходы/расходы
+   * (в зависимости от того, что наследуется от Entity)
+   * */
   static list( data, callback = f => f ) {
     return createRequest({
       url: this.HOST + this.URL,
@@ -19,6 +25,11 @@ class Entity {
     });
   }
 
+  /**
+   * Создаёт счёт или доход/расход с помощью запроса
+   * на сервер. (в зависимости от того,
+   * что наследуется от Entity)
+   * */
   static create( data, callback = f => f ) {
     return createRequest({
       url: this.HOST + this.URL,
@@ -29,6 +40,10 @@ class Entity {
     });
   }
 
+  /**
+   * Получает информацию о счёте или доходе/расходе
+   * (в зависимости от того, что наследуется от Entity)
+   * */
   static get( id = '', data, callback = f => f ) {
     return createRequest({
       url: this.HOST + this.URL + '/' + id,
@@ -39,6 +54,10 @@ class Entity {
     });
   }
 
+  /**
+   * Обновляет информацию о счёте или доходе/расходе
+   * (в зависимости от того, что наследуется от Entity)
+   * */
   static update( id = '', data, callback = f => f ) {
     return createRequest({
       url: this.HOST + this.URL + '/' + id,
@@ -49,6 +68,10 @@ class Entity {
     });
   }
 
+  /**
+   * Удаляет информацию о счёте или доходе/расходе
+   * (в зависимости от того, что наследуется от Entity)
+   * */
   static remove( id = '', data, callback = f => f ) {
     return createRequest({
       url: this.HOST + this.URL + '/' + id,
@@ -57,26 +80,6 @@ class Entity {
       data: Object.assign({ _method: 'DELETE' }, data ),
       callback
     });
-  }
-
-  isNewRecord() {
-    return !this.hasOwnProperty( 'id' );
-  }
-
-  save( callback = f => f ) {
-    return this.isNewRecord() ? this.create( callback ) : this.update( callback );
-  }
-
-  create( callback = f => f ) {
-    return this.constructor.create( this.attributes, callback );
-  }
-
-  update( callback = f => f ) {
-    return this.constructor.update( this.attributes.id, this.attributes, callback );
-  }
-
-  remove( callback = f => f ) {
-    return this.constructor.remove( this.attributes.id, this.attributes, callback );
   }
 }
 
