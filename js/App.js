@@ -79,7 +79,7 @@ class App {
       register: new RegisterForm(document.querySelector('#register-form')),
       createAccount: new CreateAccountForm(document.querySelector('#new-account-form')),
       createIncome: new CreateTransactionForm(document.querySelector('#new-income-form')),
-      crreateExpense: new CreateTransactionForm(document.querySelector('#new-expense-form'))
+      createExpense: new CreateTransactionForm(document.querySelector('#new-expense-form'))
     }
   }
 
@@ -160,6 +160,7 @@ class App {
 
   /**
    * Обновляет виджеты и содержимое страниц
+   * Вызывает методы updateWidgets и updatePages()
    * */
   static update() {
     this.updateWidgets();
