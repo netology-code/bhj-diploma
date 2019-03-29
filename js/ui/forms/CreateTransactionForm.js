@@ -12,6 +12,10 @@ class CreateTransactionForm extends AsyncForm {
     this.renderAccountsList();
   }
 
+  update() {
+    this.renderAccountsList();
+  }
+
   /**
    * Получает список счетов с помощью Account.list
    * Обновляет в форме всплывающего окна выпадающий список

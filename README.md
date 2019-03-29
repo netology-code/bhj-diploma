@@ -1,5 +1,7 @@
 # Диплом курса «Базовый JavaScript в браузере»
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zXOyBIajWsM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Описание
 
 Вам необходимо разработать приложение для 

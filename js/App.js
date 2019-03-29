@@ -106,11 +106,21 @@ class App {
   /**
    * Возвращает виджет по названию
    * Обращается к объекту App.widgets и извлекает
-   * из него свойство pageName:
-   * App.getWidget( 'transactions' ); // извелекает App.pages.transactions
+   * из него свойство widgetName:
+   * App.getWidget( 'transactions' ); // извелекает App.widgets.transactions
    * */
   static getWidget( widgetName ) {
     return this.widgets[ widgetName ];
+  }
+
+  /**
+   * Возвращает форму по названию
+   * Обращается к объекту App.forms и извлекает
+   * из него свойство formName:
+   * App.getWidget( 'transactions' ); // извелекает App.forms.transactions
+   * */
+  static getForm( formName ) {
+    return this.forms[ formName ];
   }
 
   /**
@@ -165,6 +175,7 @@ class App {
   static update() {
     this.updateWidgets();
     this.updatePages();
+    this.updateForms();
   }
 
   /**
@@ -184,5 +195,10 @@ class App {
   static updateWidgets() {
     this.getWidget( 'accounts' ).update();
     this.getWidget( 'user' ).update();
+  }
+
+  static updateForms() {
+    this.getForm( 'createIncome' ).update();
+    this.getForm( 'createExpense' ).update();
   }
 }
