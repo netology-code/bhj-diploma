@@ -1,6 +1,7 @@
 /**
  * Класс CreateTransactionForm управляет формой
  * создания новой транзакции
+ * Наследуется от AsyncForm
  * */
 class CreateTransactionForm {
   /**

@@ -1,6 +1,7 @@
 /**
  * Класс RegisterForm управляет формой
  * регистрации
+ * Наследуется от AsyncForm
  * */
 class RegisterForm {
   /**

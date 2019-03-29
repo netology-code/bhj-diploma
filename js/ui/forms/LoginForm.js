@@ -1,6 +1,7 @@
 /**
  * Класс LoginForm управляет формой
  * входа в портал
+ * Наследуется от AsyncForm
  * */
 class LoginForm {
   /**
