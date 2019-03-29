@@ -1,5 +1,7 @@
 # Создание новых транзкций (доход/расход)
 
+![sidebar toggle](../img/transactions-page.png)
+
 ## Общее описание
 
 Необходимо разработать виджет *TransactionsWidget* 

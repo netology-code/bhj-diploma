@@ -1,5 +1,7 @@
 # Создание новых счетов
 
+![sidebar toggle](../img/sidebar-accounts.png)
+
 ## Общее описание
 
 Необходимо разработать виджет *AccountsWidget* 
