@@ -5,8 +5,7 @@
 Необходимо разработать виджет *TransactionsWidget* 
 (файл js/ui/widgets/TransactionsWidget.js), 
 а также форму *CreateTransactionForm* 
-(файл js/ui/widgets/CreateTransactionForm.js) 
-и функцию *App.getWidget*
+(файл js/ui/widgets/CreateTransactionForm.js)
 
 ## TransactionsWidget
 
