@@ -36,7 +36,7 @@ class AccountsWidget {
       const createAccount = e.target.closest( '.create-account' );
 
       if ( createAccount ) {
-        const modal = new Modal( document.querySelector( '#modal-new-account' ));
+        const modal = App.getModal( 'createAccount' );
         return modal.open();
       }
 
@@ -55,6 +55,8 @@ class AccountsWidget {
    * получить список счетов через Account.list(). При
    * успешном ответе необходимо очистить список ранее
    * отображённых счетов через AccountsWidget.clear().
+   * Отображает список полученных счетов с помощью
+   * метода render()
    * */
   update() {
     if ( !User.current()) {
@@ -68,8 +70,16 @@ class AccountsWidget {
         return;
       }
       this.clear();
-      response.data.forEach( item => this.renderItem( item ));
+      this.render( response.data );
     });
+  }
+
+  /**
+   * Отрисовывает массив счетов с помощью
+   * метода renderItem
+   * */
+  render( data ) {
+    data.forEach( item => this.renderItem( item ));
   }
 
   /**

@@ -2,7 +2,7 @@
 
 ## Описание
 
-Видеодемонстрация и описание:
+Видеодемонстрация и описание (нажмите на изображение):
 
 [![BHJ Diploma](https://img.youtube.com/vi/zXOyBIajWsM/0.jpg)](https://www.youtube.com/watch?v=zXOyBIajWsM)
 
@@ -35,12 +35,11 @@
     3. [Управление формами](./md/async-forms.md)
     4. [Обработка нажатий на кнопки бокового меню](./md/sidebar-links.md)
 3. Взаимодействие API с пользовательским интерфейсом
-    1. [Подготовительный этап](./md/init-ui.md)
-    2. [Регистрация](./md/register.md)
-    3. [Авторизация](./md/login.md)
-    4. [Создание новых счетов](./md/create-accounts.md)
-    5. [Создание новых транзкций (доход/расход)](./md/create-transactions.md)
-    6. [Отображение страницы транзакций при выборе счёта](./md/display-transactions.md)
+    1. [Регистрация](./md/register.md)
+    2. [Авторизация](./md/login.md)
+    3. [Создание новых счетов](./md/create-accounts.md)
+    4. [Создание новых транзакций (доход/расход)](./md/create-transactions.md)
+    5. [Отображение страницы транзакций при выборе счёта](./md/display-transactions.md)
 
 ## Файловая структура
 
