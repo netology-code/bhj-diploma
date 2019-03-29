@@ -1,8 +1,11 @@
 # Диплом курса «Базовый JavaScript в браузере»
 
+## Описание
+
+Видеодемонстрация и описание:
+
 [![BHJ Diploma](https://img.youtube.com/vi/zXOyBIajWsM/0.jpg)](https://www.youtube.com/watch?v=zXOyBIajWsM)
 
-## Описание
 
 Вам необходимо разработать приложение для 
 управления финансами.
