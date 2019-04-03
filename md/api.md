@@ -157,13 +157,13 @@ const xhr = createRequest({
 ### Свойства HOST и URL
 
 Параметр *HOST* содержит адрес приложения: 
-*https://bhj-diploma.u-w.me*
+*http://bhj-diploma.u-w.me*
 
 Свойство *URL* содержит пустую строку.
 
 ```javascript
 console.log( Entity.URL ); // ''
-console.log( Entity.HOST ); // 'https://bhj-diploma.u-w.me'
+console.log( Entity.HOST ); // 'http://bhj-diploma.u-w.me'
 ```
 
 ### list
