@@ -89,7 +89,7 @@ const xhr = createRequest({
       mail: 'ivan@biz.pro',
       password: 'odinodin'
     },
-    method: 'GET',
+    method: 'POST',
   });
 ```
 
@@ -102,7 +102,7 @@ const xhr = new XMLHttpRequest,
 formData.append( 'mail', 'ivan@biz.pro' );
 formData.append( 'password', 'odinodin' );
 
-xhr.open( 'GET', 'https://example.com' );
+xhr.open( 'POST', 'https://example.com' );
 xhr.send( formData );
 ```
 
