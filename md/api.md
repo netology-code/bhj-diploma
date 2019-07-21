@@ -157,7 +157,7 @@ const xhr = createRequest({
 ### Свойства HOST и URL
 
 Параметр *HOST* содержит адрес приложения: 
-*http://bhj-diploma.u-w.me*
+*https://bhj-diploma.herokuapp.com/*
 
 Свойство *URL* содержит пустую строку.
 

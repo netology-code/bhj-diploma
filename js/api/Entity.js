@@ -1,7 +1,7 @@
 /**
  * Класс Entity - базовый для взаимодействия с сервером.
  * Имеет свойство URL, равно пустой строке.
- * Имеет свойство HOST, равно 'http://bhj-diploma.u-w.me'.
+ * Имеет свойство HOST, равно 'https://bhj-diploma.herokuapp.com/'.
  * */
 class Entity {
 
