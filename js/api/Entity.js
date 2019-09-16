@@ -1,7 +1,7 @@
 /**
  * Класс Entity - базовый для взаимодействия с сервером.
  * Имеет свойство URL, равно пустой строке.
- * Имеет свойство HOST, равно 'https://bhj-diploma.herokuapp.com/'.
+ * Имеет свойство HOST, равно 'https://bhj-diplom.letsdocode.ru'.
  * */
 class Entity {
 
@@ -28,14 +28,6 @@ class Entity {
    * (в зависимости от того, что наследуется от Entity)
    * */
   static get( id = '', data, callback = f => f ) {
-
-  }
-
-  /**
-   * Обновляет информацию о счёте или доходе/расходе
-   * (в зависимости от того, что наследуется от Entity)
-   * */
-  static update( id = '', data, callback = f => f ) {
 
   }
 
