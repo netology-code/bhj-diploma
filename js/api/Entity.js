@@ -1,12 +1,12 @@
 /**
  * Класс Entity - базовый для взаимодействия с сервером.
  * Имеет свойство URL, равно пустой строке.
- * Имеет свойство HOST, равно 'https://netology-bhj-diploma.herokuapp.com'.
+ * Имеет свойство HOST, равно 'https://bhj-diplom.letsdocode.ru'.
  * */
 class Entity {
 
   static get HOST() {
-    // return 'https://netology-bhj-diploma.herokuapp.com';
+    // return 'https://bhj-diplom.letsdocode.ru';
     return 'http://localhost:8000';
   }
 
@@ -46,24 +46,10 @@ class Entity {
    * */
   static get( id = '', data, callback = f => f ) {
     return createRequest({
-      url: this.HOST + this.URL + '/' + id,
+      url: this.HOST + this.URL,
+      data: Object.assign({ id: id }, data),
       method: 'GET',
       responseType: 'json',
-      data,
-      callback
-    });
-  }
-
-  /**
-   * Обновляет информацию о счёте или доходе/расходе
-   * (в зависимости от того, что наследуется от Entity)
-   * */
-  static update( id = '', data, callback = f => f ) {
-    return createRequest({
-      url: this.HOST + this.URL + '/' + id,
-      method: 'POST',
-      responseType: 'json',
-      data,
       callback
     });
   }
@@ -74,10 +60,10 @@ class Entity {
    * */
   static remove( id = '', data, callback = f => f ) {
     return createRequest({
-      url: this.HOST + this.URL + '/' + id,
+      url: this.HOST + this.URL,
+      data: Object.assign({ _method: 'DELETE' }, { id: id }, data ),
       method: 'POST',
       responseType: 'json',
-      data: Object.assign({ _method: 'DELETE' }, data ),
       callback
     });
   }
