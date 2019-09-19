@@ -56,7 +56,7 @@ class AccountsWidget {
    * успешном ответе необходимо очистить список ранее
    * отображённых счетов через AccountsWidget.clear().
    * Отображает список полученных счетов с помощью
-   * метода render()
+   * метода renderItem()
    * */
   update() {
     if ( !User.current()) {
@@ -70,16 +70,8 @@ class AccountsWidget {
         return;
       }
       this.clear();
-      this.render( response.data );
+      this.renderItem( response.data );
     });
-  }
-
-  /**
-   * Отрисовывает массив счетов с помощью
-   * метода renderItem
-   * */
-  render( data ) {
-    data.forEach( item => this.renderItem( item ));
   }
 
   /**
@@ -137,16 +129,19 @@ class AccountsWidget {
   }
 
   /**
+   * Получает массив с информацией о счетах.
    * Отображает полученный с помощью метода
    * AccountsWidget.getAccountHTML HTML-код элемента
    * и добавляет его внутрь элемента виджета
    * */
-  renderItem( item ) {
-    const { name, id } = item,
-      sum = item.sum.toLocaleString( 'en' ),
-      html = this.getAccountHTML({
-        name, id, sum
-      });
-    this.element.insertAdjacentHTML( 'beforeend', html );
+  renderItem( data ) {
+    data.forEach( item => {
+      const {name, id} = item,
+          sum = item.sum.toLocaleString('en'),
+          html = this.getAccountHTML({
+            name, id, sum
+          });
+      this.element.insertAdjacentHTML('beforeend', html);
+    });
   }
 }
