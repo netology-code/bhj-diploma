@@ -20,7 +20,7 @@
                 <h4 class="modal-title">Новый аккаунт</h4>
             </div>
             <div class="modal-body">
-                <form class="form" id="new-account-form" action="https://netology-bhj-diploma.herokuapp.com/account">
+                <form class="form" id="new-account-form" action="https://bhj-diplom.letsdocode.ru/account">
                     <input name="_method" type="hidden" value="PUT">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Название" name="name" required>
