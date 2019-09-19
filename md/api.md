@@ -535,7 +535,7 @@ User.login( data, ( err, response ) => {
 Метод посылает *POST* запрос на адрес, заданный по формату *HOST + URL + '/logout'*.
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
-как *json*.
+как *json*. После успешного выхода необходимо вызвать метод User.unsetCurrent.
 
 ## Подсказки и советы
 
