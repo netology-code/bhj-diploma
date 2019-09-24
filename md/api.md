@@ -19,7 +19,8 @@
 
 ## createRequest
 
-Функция является основным связующим звеном между клиентом и сервером.
+Функция является основным связующим звеном между клиентом и сервером. Через нее необходимо 
+организовать AJAX запросы на сервер используя API XMLHttpRequest.
 
 Пример вызова:
 
@@ -51,13 +52,13 @@ const xhr = createRequest({
 
 ### 1. Возвращает XHR
 
-Константа *xhr* в данном примере содержит объект *XHMLHttpRequest*, 
+Константа *xhr* в данном примере содержит объект *XMLHttpRequest*, 
 который возвращает функция *createRequest*.
 
 ### 2. Параметр data
 
     1. При параметре *method* = GET, данные из объекта *data* должны передаваться
-    в строке адреса. Например листинг:
+    в строке адреса. Например, листинг:
 
 ```javascript
 const xhr = createRequest({
@@ -80,7 +81,7 @@ xhr.send();
 ```
 
     2. При параметре *method* *отличном от GET*, данные из объекта 
-    *data* должны передаваться в строке адреса. Например листинг 
+    *data* должны передаваться через объект FormData. Например, листинг 
 
 ```javascript
 const xhr = createRequest({
@@ -140,16 +141,19 @@ const xhr = createRequest({
   });
 ```
 
-4. withCredentials
+### 4. withCredentials
 
 У возвращаемого объекта всегда свойство *withCredentials* задано в *true*
 
 ## Entity
 
 Это базовый класс, от которого будут наследоваться классы 
-*Account* и *Transaction*.
+*Account* и *Transaction*. Необходим для организации взаимодействия между интерфейсом программы и сервером
+через функцию *createRequest*. Если пользователю необходимо получить, изменить или добавить данные, то
+происходит обращение к методам данного класса, которые делают запрос к серверу через функцию *createRequest*
+и полученный ответ возвращают пользователю.
 
-Содержит 5 статических методов: *list*, *get*, *update*, *remove*, *create*.
+Содержит 4 статических метода: *list*, *get*, *remove* и *create*.
 Каждый из методов возвращает результат работы функции *createRequest*.
 
 Также *Entity* содержит 2 свойства
@@ -157,13 +161,13 @@ const xhr = createRequest({
 ### Свойства HOST и URL
 
 Параметр *HOST* содержит адрес приложения: 
-*https://bhj-diploma.herokuapp.com/*
+*https://bhj-diplom.letsdocode.ru*
 
 Свойство *URL* содержит пустую строку.
 
 ```javascript
 console.log( Entity.URL ); // ''
-console.log( Entity.HOST ); // 'http://bhj-diploma.u-w.me'
+console.log( Entity.HOST ); // 'https://bhj-diplom.letsdocode.ru'
 ```
 
 ### list
@@ -182,7 +186,7 @@ Entity.list( data, function( err, response ) {
 ```
 
 *data* в данном случае - объект с параметрами, второй параметр - 
-*callback*-функция (функция обратного вызова), которая будет 
+*callback*-функция (функция обратного вызова). 
 
 Метод посылает *GET* запрос на адрес, заданный по формату *HOST + URL*.
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*)
@@ -224,9 +228,10 @@ class Entity {
 ### get
 
 Метод *get* принимает __3__ аргумента: *id* и знакомые *data* и *callback*.
-*id* задаёт индентификатор записи 
+*id* задаёт идентификатор записи 
 (например, идентификатор счёта или дохода/расхода; это станет актуально
-для классов *Account* и *Transaction*)
+для классов *Account* и *Transaction*). Идентификатор *id* необходимо передавать
+ в объекте *data*.
 
 Пример вызова:
 
@@ -236,7 +241,7 @@ Entity.get( 21, { hello: 'kitty' }, function ( err, response ) {
 });
 ```
 
-Метод посылает *GET* запрос на адрес, заданный по формату *HOST + URL + '/' + id*.
+Метод посылает *GET* запрос на адрес, заданный по формату *HOST + URL*. 
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
@@ -244,7 +249,7 @@ Entity.get( 21, { hello: 'kitty' }, function ( err, response ) {
 ### remove
 
 Метод *remove* принимает __3__ аргумента: *id*, *data* и *callback*.
-К данным, передаваемых в параметре *data*, необходимо добавить 
+К данным, передаваемых в параметре *data*, необходимо добавить идентификатор *id* и
 свойство *_method* со значением *DELETE*:
 
 ```javascript
@@ -256,8 +261,8 @@ class Entity {
 // ... внутри метода create
   static remove( id, data, callback ) {
     console.log( data ); // { mail: 'ivan@biz.pro' }
-    // ... добавляем _method к data
-    console.log( data ); // { mail: 'ivan@biz.pro', _method: 'DELETE' }
+    // ... добавляем id и _method к data
+    console.log( data ); // { mail: 'ivan@biz.pro', _method: 'DELETE', id: 21 }
     // ...
     /* 
       Желательно оригинальный объект data не менять.
@@ -267,7 +272,7 @@ class Entity {
 }
 ```
 
-Метод посылает *POST* запрос на адрес, заданный по формату *HOST + URL + '/' + id*.
+Метод посылает *POST* запрос на адрес, заданный по формату *HOST + URL*.
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
@@ -282,7 +287,7 @@ class Entity {
 
 ## User
 
-В отличиче от *Account* и *Transaction*, __не наследуется__ от *Entity*.
+В отличие от *Account* и *Transaction*, __не наследуется__ от *Entity*.
 Параметр *URL* равен */user*. Параметр *HOST* совпадает с *Entity.HOST*.
 
 ### User.setCurrent
@@ -299,7 +304,7 @@ const user = {
 
 user.setCurrent( user );
 
-console.log( localStorage[ 'user' ]); // строка "{\"id\":12,\"name\":\"Vlad\"}
+console.log( localStorage[ 'user' ]); // строка "{"id":12,"name":"Vlad"}
 ```
 ### User.current
 
@@ -437,7 +442,7 @@ User.register( data, ( err, response ) => {
             "Поле E-Mail адрес должно быть действительным электронным адресом."
         ],
         "password": [
-            "Количество символов в поле Пароль должно быть не менее 8."
+            "Количество символов в поле Пароль должно быть не менее 3."
         ]
     }
 }
@@ -513,7 +518,7 @@ User.login( data, ( err, response ) => {
 После авторизации установите в случае успешного ответа полученного пользователя 
 с помощью метода *User.setCurrent*.
 
-Метод посылает *POST* запрос на адрес, заданный по формату *HOST + URL + '/register'*.
+Метод посылает *POST* запрос на адрес, заданный по формату *HOST + URL + '/login'*.
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
@@ -534,7 +539,7 @@ User.login( data, ( err, response ) => {
 Метод посылает *POST* запрос на адрес, заданный по формату *HOST + URL + '/logout'*.
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
-как *json*.
+как *json*. После успешного выхода необходимо вызвать метод User.unsetCurrent.
 
 ## Подсказки и советы
 
@@ -605,5 +610,15 @@ class User {
   }
 }
 ```
+
+### Проверка запросов к / ответов от сервера
+
+Для проверки запросов / ответов можно использовать *Инструменты разработчика* в браузере.
+Во вкладке *Network*, в левом окне, нужно выбрать файл, через который идет запрос на сервер.
+В правом окне в закладке *Headers* будут указаны параметры запроса. Метод, через который идет запрос, 
+а так же данные, отправленные на сервер. В закладках *Response* и *Preview* можно посмотреть полученный
+ответ от сервера. 
+
+![](../img/network.png)
 
 </details>

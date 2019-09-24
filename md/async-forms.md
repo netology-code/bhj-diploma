@@ -13,7 +13,7 @@ __асинхронно__, то есть без перезагрузки стра
 Форма размечена в HTML следующим образом (пример):
 
 ```html
-<form class="form" id="new-account-form" action="https://netology-bhj-diploma.herokuapp.com/account">
+<form class="form" id="new-account-form" action="https://bhj-diplom.letsdocode.ru/account">
     <input name="_method" type="hidden" value="PUT">
     <div class="form-group">
         <input type="text" class="form-control" placeholder="Название" name="name" required>
@@ -46,9 +46,6 @@ __асинхронно__, то есть без перезагрузки стра
 Прикрпеляет к форме следующий обработчик:
 
 Запрещает странице перезагружаться при попытке __успешной__ отправки.
-При неуспешной отправке отображает ошибки ввода обязательных полей
-встроенным в браузер способом (всплывающие подсказки вида 
-«Вам необходимо заполнить это поле»).
 
 При успешной отправке вызывает метод *submit*
 
@@ -87,7 +84,7 @@ console.log( asyncForm.getData());
 ### onSubmit
 
 Пустой метод. Пригодится для дальнейших форм, что будут унаследованы от
-*AsyncForm*. Например в формах:
+*AsyncForm*. Например, в формах:
 
 1. Создания аккаунта
 2. Создания новой транзакции

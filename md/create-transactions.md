@@ -74,7 +74,7 @@
                 <h4 class="modal-title">Новый расход</h4>
             </div>
             <div class="modal-body">
-                <form class="form" id="new-expense-form" action="https://netology-bhj-diploma.herokuapp.com/transaction/create">
+                <form class="form" id="new-expense-form" action="https://bhj-diplom.letsdocode.ru/transaction/create">
                     <input name="_method" type="hidden" value="PUT">
                     <input name="type" type="hidden" value="expense">
 

@@ -20,7 +20,7 @@
                 <h4 class="modal-title">Новый аккаунт</h4>
             </div>
             <div class="modal-body">
-                <form class="form" id="new-account-form" action="https://netology-bhj-diploma.herokuapp.com/account">
+                <form class="form" id="new-account-form" action="https://bhj-diplom.letsdocode.ru/account">
                     <input name="_method" type="hidden" value="PUT">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Название" name="name" required>
@@ -73,15 +73,18 @@ css-свойство *display* со значением *block*.
 
 ### close
 
-Закрывает всплывающее окно В контейнере (свойство element) удаляет
+Закрывает всплывающее окно. В контейнере (свойство element) удаляет
 css-свойство *display*.
+
+### onClose
+
+Срабатывает после нажатия на элементы, закрывающие окно. Закрывает текущее окно используя метод *close()*
 
 ### registerEvents
 
-По факту требуется
 Находит внутри контейнера (свойство element) все элементы, которые имеют
-атрибут *data-dismiss* со значением *modal*. Устанавливает обработчик события
-для этих элементов, которые вызывают метод *close()* и тем самым закрывают окно
+атрибут *data-dismiss* со значением *modal*. Устанавливает обработчик событий
+для этих элементов, которые вызывают метод *onClose()*.
 
 ### unregisterEvents
 
