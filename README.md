@@ -82,7 +82,7 @@ JavaScript-логики.
     
 ## Формат сдачи
 
-Перейдите по ссылке в [repl.it](https://repl.it/@neizerth/bhj-diploma)
+Перейдите по ссылке в [repl.it](https://repl.it/@NKhashchanov/bhj-diplom)
 и нажмите кнопку *Fork*.
 
 Ссылку на доработанный проект предоставьте вашему дипломному руководителю.
