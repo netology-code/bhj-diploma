@@ -91,7 +91,7 @@ class TransactionsPage {
     }
     this.lastOptions = options;
     Account.get( options.account_id, {}, ( err, response ) => {
-      this.renderTitle( response.account.name );
+      this.renderTitle( response.data.name );
     });
     Transaction.list( options, ( err, response ) => {
       if ( err ) {

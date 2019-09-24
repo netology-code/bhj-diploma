@@ -22,14 +22,11 @@ class AsyncForm {
   }
 
   /**
-   * Необходимо запретить отправку форму и в момент отправки
+   * Необходимо запретить отправку формы и в момент отправки
    * вызывает метод submit()
    * */
   registerEvents() {
     this.element.addEventListener( 'submit', e => {
-      if ( !this.element.checkValidity()) {
-        return;
-      }
       e.preventDefault();
       this.submit();
     });
