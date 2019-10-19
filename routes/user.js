@@ -80,16 +80,21 @@ router.post("/logout", function(request, response) {
 //запрос получения текущего пользователя
 router.get("/current", function(request, response) {
     const db = low(new FileSync('db.json'));// получение БД
-    //получение из БД пользователя с ключом авторизации
-    let user = db.get("users").find({isAuthorized: true});
+    let { id } = request.query; // получение id пользователя из запроса
+    //получение из БД пользователя с переданным id
+    let user = db.get("users").find({id});
     let userValue = user.value();//получение значения из БД
-    if(!!userValue){//если пользователь найден...
+    if(userValue && userValue.isAuthorized){//если пользователь найден и он авторизован...
         //удаляются лишние поля, которые не нужны для Front-end'a
         delete userValue.password;
         delete userValue.isAuthorized;
+        //отправка ответа пользователем
+        response.json({ success: true, user: userValue });
     }
-    //отправка ответа с найденным (или ненайденным) пользователем
-    response.json({ success: !!userValue, user: userValue });
+    else{
+        //отправка ответа с отсутствием пользователя
+        response.json({ success: false, user: null });
+    }
 })
 
 
