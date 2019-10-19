@@ -14,7 +14,6 @@ if(!db.get('users').value())
     setDefaultUser(db);
 
 const app = express();
-app.use(morgan('tiny'));
 app.use(express.static(`${__dirname}/${PUBLIC_PATH}`));
 
 const api = require('./routes');
