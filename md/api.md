@@ -161,7 +161,7 @@ const xhr = createRequest({
 ### Свойства HOST и URL
 
 Параметр *HOST* содержит адрес приложения: 
-*https://bhj-diplom.letsdocode.ru*
+*https://bhj-diplom.letsdocode.ru* или *http://localhost:8000*
 
 Свойство *URL* содержит пустую строку.
 

@@ -3,7 +3,6 @@ const { PORT, PUBLIC_PATH, INDEX_FILE } = process.env;
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
-const bodyParser = require('body-parser');
 
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync', {
@@ -15,12 +14,10 @@ if(!db.get('users').value())
     setDefaultUser(db);
 
 const app = express();
-app.use(morgan('tiny'));
 app.use(express.static(`${__dirname}/${PUBLIC_PATH}`));
 
 const api = require('./routes');
 app.use('/', api);
-app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
 app.get('*', function (_, res) {
