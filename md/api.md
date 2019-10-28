@@ -569,7 +569,7 @@ const data = {
 *User.current*: 
 
 Метод GET - id, name и email - вернет данные пользователя и *success = true*, в остальных случаях - *success = false* и 
-ошибку: "Необходимо передать id, name и email пользователя"
+ошибку: "Необходима авторизация"
 
 *User.login*:
 
