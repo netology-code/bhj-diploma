@@ -1,0 +1,82 @@
+.user-panel {
+  display: none;
+}
+
+.transactions-panel {
+  display: none;
+}
+
+.accounts-panel {
+  display: none;
+}
+
+.categories-panel {
+  display: none;
+}
+
+.menu-item_logout {
+  display: none;
+}
+
+.app_user-logged .user-panel,
+.app_user-logged .transactions-panel,
+.app_user-logged .accounts-panel,
+.app_user-logged .categories-panel,
+.app_user-logged .menu-item_logout {
+  display: block;
+}
+
+.app_user-logged .menu-item_login,
+.app_user-logged .menu-item_register {
+  display: none;
+}
+
+.create-account {
+  cursor: pointer;
+}
+
+.transaction {
+  border-bottom: 1px solid lightgray;
+}
+
+.transaction__icon {
+  width: 50px;
+  height: 70px;
+  line-height: 70px;
+}
+
+.transaction__icon .fa {
+  color: #fff;
+  padding: 5px 7px;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+.transaction_income .transaction__title {
+  color: green;
+}
+
+.transaction_expense .transaction__title {
+  color: red;
+}
+
+.transaction_income .transaction__icon .fa {
+  background: green;
+}
+
+.transaction_expense .transaction__icon .fa {
+  background: red;
+}
+
+.transaction__summ {
+  font-size: 20px;
+  line-height: 70px;
+}
+
+.transaction__details {
+  display: flex;
+}
+
+.transaction__controls {
+  line-height: 70px;
+}

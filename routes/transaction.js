@@ -39,7 +39,7 @@ router.post("/", upload.none(), function(request, response) {
             //отправление ответа с ошибкой о необходимости авторизации
             response.json({ success: false, error:"Необходима авторизация" });
         else{// если авторизованный пользователь существует
-            let currentUserId = currentUser.user_id;// получить id текузего пользователя
+            let currentUserId = currentUser.user_id;// получить id текущего пользователя
             //добавление существующей транзакцию к списку и записывание в БД
             transactions.push({ type:type.toUpperCase(), name, sum:+sum, account_id, user_id: currentUserId, created_at: new Date().toISOString()}).write();
             response.json({ success: true });// отправление ответа с успешностью

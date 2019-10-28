@@ -93,7 +93,7 @@ router.get("/current", function(request, response) {
     }
     else{
         //отправка ответа с отсутствием пользователя
-        response.json({ success: false, user: null });
+        response.json({ success: false, user: null, error: 'Необходимо передать id, name и email пользователя' });
     }
 })
 

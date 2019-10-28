@@ -17,11 +17,11 @@ router.post("/", upload.none(), function(request, response) {
         createAccount(response, name);//создание счёта
 
     if(_method == "DELETE"){//если метод DELETE...
-        removeAccount(response, request.body.id);//создание счёта
+        removeAccount(response, request.body.id);//удаление счёта
     }
 });
 
-//запрос проучения списка счётов
+//запрос получения списка счетов
 router.get("/:id?", upload.none(), function(request, response) {
     const db = low(new FileSync('db.json'));// получение БД
     let id = request.query.id; // получение id из запроса
@@ -45,7 +45,7 @@ function createAccount(response, name){
     let userValue = user.value();// получение значения авторизованного пользователя
     let createdAccount = { name, user_id:userValue.id, id: uniqid()};//создаваемый аккаунт
     db.get("accounts").push(createdAccount).write();//добавление созданного аккаунта к уже существующим и запись в БД
-    response.json({ success: true, account: createdAccount });// отправка ответа с 
+    response.json({ success: true, account: createdAccount });// отправка ответа с данными
 }
 
 //функция удаления счёта
