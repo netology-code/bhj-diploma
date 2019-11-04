@@ -57,7 +57,7 @@ const xhr = createRequest({
 
 ### 2. Параметр data
 
-    1. При параметре *method* = GET, данные из объекта *data* должны передаваться
+*1.* При параметре *method* = GET, данные из объекта *data* должны передаваться
     в строке адреса. Например, листинг:
 
 ```javascript
@@ -80,7 +80,7 @@ xhr.open( 'GET', 'https://example.com?mail=ivan@biz.pro&password=odinodin' );
 xhr.send();
 ```
 
-    2. При параметре *method* *отличном от GET*, данные из объекта 
+*2.* При параметре *method* *отличном от GET*, данные из объекта 
     *data* должны передаваться через объект FormData. Например, листинг 
 
 ```javascript
