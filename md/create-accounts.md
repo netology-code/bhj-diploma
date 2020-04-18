@@ -138,11 +138,9 @@ App.showPage( 'transactions', { account_id: id_счёта });
 
 ```json
 {
-  // ...
-  "id": 35
+  "id": 35,
   "name": "Сбербанк",
   "sum": 2396.30
-  // ...
 }
 ```
 
