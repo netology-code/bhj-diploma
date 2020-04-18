@@ -15,7 +15,7 @@
 4. Класс *Transaction* для управления доходами и расходами пользователя (наследуется от *Entity*).
 5. Класс *User* для управления пользователями.
 
-Все классы и функция должны находиться и быть доработаны в папке *js/api*.
+Все классы и функция должны находиться и быть доработаны в папке *public/js/api*.
 
 ## createRequest
 
@@ -156,18 +156,18 @@ const xhr = createRequest({
 Содержит 4 статических метода: *list*, *get*, *remove* и *create*.
 Каждый из методов возвращает результат работы функции *createRequest*.
 
-Также *Entity* содержит 2 свойства
+Также *Entity* содержит 2 свойства.
 
 ### Свойства HOST и URL
 
 Параметр *HOST* содержит адрес приложения: 
-*https://bhj-diplom.letsdocode.ru* или *http://localhost:8000*
+*http://localhost:8000*
 
 Свойство *URL* содержит пустую строку.
 
 ```javascript
 console.log( Entity.URL ); // ''
-console.log( Entity.HOST ); // 'https://bhj-diplom.letsdocode.ru'
+console.log( Entity.HOST ); // 'http://localhost:8000'
 ```
 
 ### list
@@ -230,8 +230,7 @@ class Entity {
 Метод *get* принимает __3__ аргумента: *id* и знакомые *data* и *callback*.
 *id* задаёт идентификатор записи 
 (например, идентификатор счёта или дохода/расхода; это станет актуально
-для классов *Account* и *Transaction*). Идентификатор *id* необходимо передавать
- в объекте *data*.
+для классов *Account* и *Transaction*).
 
 Пример вызова:
 
@@ -245,6 +244,9 @@ Entity.get( 21, { hello: 'kitty' }, function ( err, response ) {
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
+
+Пример получения определённого счёта: `http://localhost:8000/account/2`
+
 
 ### remove
 

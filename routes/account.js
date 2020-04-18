@@ -23,19 +23,25 @@ router.post("/", upload.none(), function(request, response) {
 
 //запрос получения списка счетов
 router.get("/:id?", upload.none(), function(request, response) {
-    const db = low(new FileSync('db.json'));// получение БД
-    let id = request.query.id; // получение id из запроса
-    
-    // получение списка счетов, которые пренадлежат указанному пользователю
-    let accounts = db.get("accounts").filter({user_id:id}).value();
-    for(let i = 0; i < accounts.length; i++){// цикл по всем аккаунтам
-        //получение всех транзакций для нужного счёта
-        let transactions = db.get("transactions").filter({account_id: accounts[i].id}).value();
-        //подсчёт баланса для счёта
-        accounts[i].sum = transactions.reduce((sum, a) => a.type === "EXPENSE" ? sum - a.sum : sum + a.sum, 0);
+    const db = low(new FileSync('db.json'));
+    let user = db.get("users").find({isAuthorized: true});
+
+    let userValue = user.value();
+    let id = request.params.id;
+
+    if(id){
+        let currentAccount = db.get("accounts").find({id}).value();
+        let currentAccountTransactions = db.get("transactions").filter({account_id: currentAccount.id}).value();
+        currentAccount.sum = currentAccountTransactions.reduce((sum, a) => a.type === "EXPENSE" ? sum - a.sum : sum + a.sum, 0);
+        response.json({ success: true, account:currentAccount });
+    } else {
+        let accounts = db.get("accounts").filter({user_id:userValue.id}).value();
+        for(let i = 0; i < accounts.length; i++){
+            let transactions = db.get("transactions").filter({account_id: accounts[i].id}).value();
+            accounts[i].sum = transactions.reduce((sum, a) => a.type === "EXPENSE" ? sum - a.sum : sum + a.sum, 0);
+        }
+        response.json({ success: true, data: accounts });
     }
-    //отправка ответа со списком счётов и посчитанного баланса для каждого счёта
-    response.json({ success: true, data: accounts });
 });
 
 //функция создания счёта
