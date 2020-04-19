@@ -6,7 +6,7 @@
 
 Необходимо разработать форму *CreateAccountForm* и виджет 
 *AccountsWidget* 
-(js/ui/widgets/AccountsWidget.js). 
+(файл *public/js/ui/widgets/AccountsWidget.js*). 
 
 ## CreateAccountForm
 
@@ -106,9 +106,9 @@ AccountsWidget отвечает за следующие функции:
 
 ### registerEvents
 
-При нажатии на .create-account открывает окно #modal-new-account (с помощью App.getModal())
+При нажатии на *.create-account* открывает окно *#modal-new-account* (с помощью *App.getModal()*)
 для создания нового счёта. При нажатии на один из существующих счетов
-(которые отображены в боковой колонке), вызывает AccountsWidget.onSelectAccount()
+(которые отображены в боковой колонке), вызывает *AccountsWidget.onSelectAccount()*
 
 ### update
 
