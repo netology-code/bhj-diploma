@@ -17,7 +17,7 @@
 
 ## Sidebar.initAuthLinks
 
-Функция находится в классе *Sidebar* (файл *js/ui/Sidebar.js*).
+Функция находится в классе *Sidebar* (файл *public/js/ui/Sidebar.js*).
 
 1. При нажатии на кнопку «Регистрация» необходимо открыть окно #modal-register
 (предварительно найдя его через *App.getModal*)
@@ -31,7 +31,7 @@
 
 ## Sidebar.initToggleButton
 
-Функция находится в классе *Sidebar* (файл *js/ui/Sidebar.js*).
+Функция находится в классе *Sidebar* (файл *public/js/ui/Sidebar.js*).
 
  Отвечает за скрытие/показа боковой колонки:
    * переключает два класса для *body*: *sidebar-open* и *sidebar-collapse*

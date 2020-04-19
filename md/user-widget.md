@@ -3,7 +3,7 @@
 ## Общее описание
 
 Необходимо разработать виджет *UserWidget* 
-(файл js/ui/widgets/UserWidget.js)
+(файл *public/js/ui/widgets/UserWidget.js*)
 
 ## Структура
 

@@ -2,7 +2,7 @@
 
 ![sidebar toggle](../img/modal.png)
 
-Для всплывающих окон выделен класс *Modal* (файл *js/ui/Modal.js*). 
+Для всплывающих окон выделен класс *Modal* (файл *public/js/ui/Modal.js*). 
 Вам необходимо реализовать управление данными окнами.
 
 ## Общее описание
@@ -20,7 +20,7 @@
                 <h4 class="modal-title">Новый аккаунт</h4>
             </div>
             <div class="modal-body">
-                <form class="form" id="new-account-form" action="https://bhj-diplom.letsdocode.ru/account">
+                <form class="form" id="new-account-form" action="http://localhost:8000/account">
                     <input name="_method" type="hidden" value="PUT">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Название" name="name" required>
@@ -68,12 +68,12 @@ const element =
 
 ### open
 
-Открывает всплываюее окно. В контейнер (свойство element) устанавливает
+Открывает всплываюее окно. В контейнер (свойство *element*) устанавливает
 css-свойство *display* со значением *block*.
 
 ### close
 
-Закрывает всплывающее окно. В контейнере (свойство element) удаляет
+Закрывает всплывающее окно. В контейнере (свойство *element*) удаляет
 css-свойство *display*.
 
 ### onClose
@@ -82,7 +82,7 @@ css-свойство *display*.
 
 ### registerEvents
 
-Находит внутри контейнера (свойство element) все элементы, которые имеют
+Находит внутри контейнера (свойство *element*) все элементы, которые имеют
 атрибут *data-dismiss* со значением *modal*. Устанавливает обработчик событий
 для этих элементов, которые вызывают метод *onClose()*.
 

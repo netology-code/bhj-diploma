@@ -67,16 +67,6 @@
                     </button>
                 </div>
 
-                <!-- Повышенный уровень сложности. Раскомментируйте код  -->
-                <!--<form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search...">
-                        <span class="input-group-btn">
-                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
-                </form>-->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">
                         Авторизация
@@ -126,36 +116,6 @@
                         </a>
                     </li>-->
                 </ul>
-                <!-- Повышенный уровень сложности. Раскомментируйте код -->
-                <!--<ul class="sidebar-menu categories-panel" data-widget="tree">
-                    <li class="header">
-                        Категории
-                        <div class="pull-right">
-                            <span class="label label-success">
-                                <span class="fa fa-plus"></span>
-                                Новая категория
-                            </span>
-                        </div>
-                    </li>
-                    <li class="category">
-                        <a href="#">
-                            <span class="fa fa-home"></span>
-                            <span>Дом</span>
-                        </a>
-                    </li>
-                    <li class="category">
-                        <a href="#">
-                            <span class="fa fa-cutlery"></span>
-                            <span>Бакалея</span>
-                        </a>
-                    </li>
-                    <li class="category">
-                        <a href="#">
-                            <span class="fa fa-gift"></span>
-                            <span>Подарки</span>
-                        </a>
-                    </li>
-                </ul>-->
             </section>
         </aside>
         <div class="content-wrapper">
@@ -167,15 +127,6 @@
                         <span class="fa fa-trash"></span>
                         Удалить счёт
                     </button>
-                    <!-- Повышенный уровень сложности  -->
-                    <!--<button class="btn btn-success">
-                        <span class="fa fa-thumbs-o-up"></span>
-                        Доход
-                    </button>
-                    <button class="btn btn-danger">
-                        <span class="fa fa-thumbs-o-down"></span>
-                        Расход
-                    </button>-->
                 </h1>
             </section>
             <section class="content">
@@ -237,7 +188,7 @@
                     <h4 class="modal-title">Вход</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" id="login-form" action="https://bhj-diplom.letsdocode.ru/login" method="post">
+                    <form class="form" id="login-form" action="http://localhost:8000/login" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="E-mail" name="email" required>
                         </div>
@@ -265,7 +216,7 @@
                     <h4 class="modal-title">Регистрация</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" id="register-form" action="https://bhj-diplom.letsdocode.ru/register" method="post">
+                    <form class="form" id="register-form" action="http://localhost:8000/register" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Имя" name="name" required>
                         </div>
@@ -296,7 +247,7 @@
                     <h4 class="modal-title">Новый аккаунт</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" id="new-account-form" action="https://bhj-diplom.letsdocode.ru/account">
+                    <form class="form" id="new-account-form" action="http://localhost:8000/account">
                         <input name="_method" type="hidden" value="PUT">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Название" name="name" required>
@@ -322,7 +273,7 @@
                     <h4 class="modal-title">Новый доход</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" id="new-income-form" action="https://bhj-diplom.letsdocode.ru/account">
+                    <form class="form" id="new-income-form" action="http://localhost:8000/account">
                         <input name="_method" type="hidden" value="PUT">
                         <input name="type" type="hidden" value="income">
 
@@ -333,11 +284,6 @@
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Сумма" name="sum" required>
                         </div>
-<!--
-                        <div class="form-group">
-                            <input type="datetime-local" class="form-control" placeholder="Дата" name="summ" required>
-                        </div>-->
-
                         <div class="form-group">
                             <label for="income-accounts-list"></label>
                             <select name="account_id" id="income-accounts-list" class="form-control accounts-select" required></select>
@@ -363,7 +309,7 @@
                     <h4 class="modal-title">Новый расход</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" id="new-expense-form" action="https://bhj-diplom.letsdocode.ru/transaction/create">
+                    <form class="form" id="new-expense-form" action="http://localhost:8000/transaction/create">
                         <input name="_method" type="hidden" value="PUT">
                         <input name="type" type="hidden" value="expense">
 
@@ -374,11 +320,6 @@
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Сумма" name="sum" required>
                         </div>
-
-                        <!--<div class="form-group">
-                            <input type="datetime-local" class="form-control" placeholder="Дата" name="summ" required>
-                        </div>-->
-
                         <div class="form-group">
                             <label for="expense-accounts-list"></label>
                             <select name="account_id" id="expense-accounts-list" class="form-control accounts-select" required></select>
@@ -399,13 +340,11 @@
     <script src="../js/api/createRequest.js"></script>
     <script src="../js/api/Entity.js"></script>
     <script src="../js/api/Account.js"></script>
-    <script src="../js/api/Category.js"></script>
     <script src="../js/api/Transaction.js"></script>
     <script src="../js/api/User.js"></script>
 
     <script src="../js/ui/Modal.js"></script>
     <script src="../js/ui/widgets/AccountsWidget.js"></script>
-    <script src="../js/ui/widgets/CategoriesWidget.js"></script>
     <script src="../js/ui/widgets/TransactionsWidget.js"></script>
     <script src="../js/ui/widgets/UserWidget.js"></script>
 

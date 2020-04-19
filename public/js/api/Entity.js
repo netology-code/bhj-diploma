@@ -1,7 +1,7 @@
 /**
  * Класс Entity - базовый для взаимодействия с сервером.
  * Имеет свойство URL, равно пустой строке.
- * Имеет свойство HOST, равно 'https://bhj-diplom.letsdocode.ru'.
+ * Имеет свойство HOST, равно 'http://localhost:8000'.
  * */
 class Entity {
 

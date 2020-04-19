@@ -33,7 +33,7 @@ router.get("/:id?", upload.none(), function(request, response) {
         let currentAccount = db.get("accounts").find({id}).value();
         let currentAccountTransactions = db.get("transactions").filter({account_id: currentAccount.id}).value();
         currentAccount.sum = currentAccountTransactions.reduce((sum, a) => a.type === "EXPENSE" ? sum - a.sum : sum + a.sum, 0);
-        response.json({ success: true, account:currentAccount });
+        response.json({ success: true, data:currentAccount });
     } else {
         let accounts = db.get("accounts").filter({user_id:userValue.id}).value();
         for(let i = 0; i < accounts.length; i++){

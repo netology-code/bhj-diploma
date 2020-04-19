@@ -6,14 +6,14 @@
 __асинхронно__, то есть без перезагрузки страницы.
 
 Для обработки таких форм создан класс *AsyncForm* 
-(файл *js/ui/forms/AsyncForm.js*).
+(файл *public/js/ui/forms/AsyncForm.js*).
 
 ## Общее описание
 
 Форма размечена в HTML следующим образом (пример):
 
 ```html
-<form class="form" id="new-account-form" action="https://bhj-diplom.letsdocode.ru/account">
+<form class="form" id="new-account-form" action="http://localhost:8000/account">
     <input name="_method" type="hidden" value="PUT">
     <div class="form-group">
         <input type="text" class="form-control" placeholder="Название" name="name" required>

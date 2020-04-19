@@ -7,7 +7,7 @@
 Необходимо разработать виджет *TransactionsWidget* 
 (файл js/ui/widgets/TransactionsWidget.js), 
 а также форму *CreateTransactionForm* 
-(файл js/ui/forms/CreateTransactionForm.js)
+(файл *public/js/ui/forms/CreateTransactionForm.js*)
 
 ## TransactionsWidget
 
@@ -74,7 +74,7 @@
                 <h4 class="modal-title">Новый расход</h4>
             </div>
             <div class="modal-body">
-                <form class="form" id="new-expense-form" action="https://bhj-diplom.letsdocode.ru/transaction/create">
+                <form class="form" id="new-expense-form" action="http://localhost:8000/transaction/create">
                     <input name="_method" type="hidden" value="PUT">
                     <input name="type" type="hidden" value="expense">
 

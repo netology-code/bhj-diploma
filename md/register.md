@@ -3,7 +3,7 @@
 ## Общее описание
 
 Вам необходимо реализовать класс *RegisterForm*
-(файл *js/ui/forms/RegisterForm.js*)
+(файл *public/js/ui/forms/RegisterForm.js*)
 
 *RegisterForm* наследуется от класса *AsyncForm*. По факту необходимо 
 реализовать только метод *onSubmit*
