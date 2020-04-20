@@ -32,6 +32,7 @@ router.post("/", upload.none(), function(request, response) {
         }
     }
     if(_method == "PUT"){// если метод PUT...
+        const reg =  /^\-?\d+(\.?\d+)?$/;
         const { type, name, sum, account_id } = request.body;// получение значений из тела запроса
         // нахождение значения текущего пользователя
         let currentUser = db.get("users").find({isAuthorized: true}).value();
