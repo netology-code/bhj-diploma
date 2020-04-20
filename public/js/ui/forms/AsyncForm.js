@@ -59,8 +59,6 @@ class AsyncForm {
     const data = this.getData();
 
     this.onSubmit({
-      url: this.element.action,
-      method: this.element.method,
       data
     });
   }

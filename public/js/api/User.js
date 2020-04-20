@@ -1,7 +1,6 @@
 /**
  * Класс User управляет авторизацией, выходом и
  * регистрацией пользователя из приложения
- * Имеет свойство HOST, равно значению Entity.HOST.
  * Имеет свойство URL, равное '/user'.
  * */
 class User {
@@ -36,7 +35,7 @@ class User {
    * */
   static fetch( data, callback = f => f ) {
     return createRequest({
-      url: this.HOST + this.URL + '/current',
+      url: this.URL + '/current',
       method: 'GET',
       responseType: 'json',
       data,
@@ -60,7 +59,7 @@ class User {
    * */
   static login( data, callback = f => f ) {
     return createRequest({
-      url: this.HOST + this.URL + '/login',
+      url: this.URL + '/login',
       method: 'POST',
       responseType: 'json',
       data,
@@ -81,7 +80,7 @@ class User {
    * */
   static register( data, callback = f => f ) {
     return createRequest({
-      url: this.HOST + this.URL + '/register',
+      url: this.URL + '/register',
       method: 'POST',
       responseType: 'json',
       data,
@@ -100,7 +99,7 @@ class User {
    * */
   static logout( data, callback = f => f ) {
     return createRequest({
-      url: this.HOST + this.URL + '/logout',
+      url: this.URL + '/logout',
       method: 'POST',
       responseType: 'json',
       data,
@@ -114,5 +113,4 @@ class User {
   }
 }
 
-User.HOST = Entity.HOST;
 User.URL = '/user';

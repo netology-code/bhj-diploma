@@ -12,10 +12,6 @@ describe("Класс Account", function() {
     expect(new Account).to.be.an.instanceof(Entity);
   });
 
-  it('Свойство HOST имеет значение Entity.HOST', () => {
-    expect(Account.HOST).to.be.equals( Entity.HOST );
-  });
-
   it('Свойство URL имеет значение /account', () => {
     expect(Account.URL).to.be.equals( '/account' );
   });

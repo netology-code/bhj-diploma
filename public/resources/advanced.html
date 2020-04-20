@@ -188,7 +188,7 @@
                     <h4 class="modal-title">Вход</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" id="login-form" action="http://localhost:8000/login" method="post">
+                    <form class="form" id="login-form">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="E-mail" name="email" required>
                         </div>
@@ -216,7 +216,7 @@
                     <h4 class="modal-title">Регистрация</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" id="register-form" action="http://localhost:8000/register" method="post">
+                    <form class="form" id="register-form">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Имя" name="name" required>
                         </div>
@@ -247,8 +247,7 @@
                     <h4 class="modal-title">Новый аккаунт</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" id="new-account-form" action="http://localhost:8000/account">
-                        <input name="_method" type="hidden" value="PUT">
+                    <form class="form" id="new-account-form">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Название" name="name" required>
                         </div>
@@ -273,8 +272,7 @@
                     <h4 class="modal-title">Новый доход</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" id="new-income-form" action="http://localhost:8000/account">
-                        <input name="_method" type="hidden" value="PUT">
+                    <form class="form" id="new-income-form">
                         <input name="type" type="hidden" value="income">
 
                         <div class="form-group">
@@ -309,8 +307,7 @@
                     <h4 class="modal-title">Новый расход</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" id="new-expense-form" action="http://localhost:8000/transaction/create">
-                        <input name="_method" type="hidden" value="PUT">
+                    <form class="form" id="new-expense-form">
                         <input name="type" type="hidden" value="expense">
 
                         <div class="form-group">

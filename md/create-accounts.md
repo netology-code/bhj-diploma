@@ -128,7 +128,7 @@ AccountsWidget отвечает за следующие функции:
 Срабатывает в момент выбора счёта. Устанавливает текущему 
 выбранному элементу счёта класс *.active*. Удаляет ранее 
 выбранному элементу счёта класс *.active*. Вызывает 
-App.showPage( 'transactions', { account_id: id_счёта });
+*App.showPage( 'transactions', { account_id: id_счёта });*
 
 ### getAccountHTML
 
