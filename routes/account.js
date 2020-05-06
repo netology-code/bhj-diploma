@@ -32,7 +32,7 @@ router.get("/:id?", upload.none(), function(request, response) {
         //получение всех транзакций для нужного счёта
         let transactions = db.get("transactions").filter({account_id: accounts[i].id}).value();
         //подсчёт баланса для счёта
-        accounts[i].sum = transactions.reduce((sum, a) => a.type === "EXPENSE" ? sum - a.sum : sum + a.sum, 0);
+        accounts[i].sum = transactions.reduce((sum, a) => a.type === "expense" ? sum - a.sum : sum + a.sum, 0);
     }
     //отправка ответа со списком счётов и посчитанного баланса для каждого счёта
     response.json({ success: true, data: accounts });
