@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const multer  = require('multer');
 const upload = multer();
+const uniqid = require('uniqid');
 
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync', {
@@ -44,6 +45,7 @@ router.post("/", upload.none(), function(request, response) {
                 let currentUserId = currentUser.user_id;// получить id текущего пользователя
                 //добавление существующей транзакцию к списку и записывание в БД
                 transactions.push({
+                    id: uniqid(),
                     type: type.toUpperCase(),
                     name,
                     sum: +sum,
