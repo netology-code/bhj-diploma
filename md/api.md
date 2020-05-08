@@ -15,11 +15,12 @@
 4. Класс *Transaction* для управления доходами и расходами пользователя (наследуется от *Entity*).
 5. Класс *User* для управления пользователями.
 
-Все классы и функция должны находиться и быть доработаны в папке *js/api*.
+Все классы и функция должны находиться и быть доработаны в папке *public/js/api*.
 
 ## createRequest
 
-Функция является основным связующим звеном между клиентом и сервером.
+Функция является основным связующим звеном между клиентом и сервером. Через нее необходимо 
+организовать AJAX запросы на сервер используя API XMLHttpRequest.
 
 Пример вызова:
 
@@ -31,7 +32,7 @@ const xhr = createRequest({
       'Content-type': 'application/json' 
     },
     data: { // произвольные данные, могут отсутствовать
-      username: 'ivan@poselok.ru',
+      email: 'ivan@poselok.ru',
       password: 'odinodin'
     },
     responseType: 'json', // формат, в котором необходимо выдать результат
@@ -51,12 +52,12 @@ const xhr = createRequest({
 
 ### 1. Возвращает XHR
 
-Константа *xhr* в данном примере содержит объект *XHMLHttpRequest*, 
+Константа *xhr* в данном примере содержит объект *XMLHttpRequest*, 
 который возвращает функция *createRequest*.
 
 ### 2. Параметр data
 
-    1. При параметре *method* = GET, данные из объекта *data* должны передаваться
+*1.* При параметре *method* = GET, данные из объекта *data* должны передаваться
     в строке адреса. Например, листинг:
 
 ```javascript
@@ -66,7 +67,7 @@ const xhr = createRequest({
       mail: 'ivan@biz.pro',
       password: 'odinodin'
     },
-    method: 'GET'
+    method: 'GET',
   });
 ```
 
@@ -79,7 +80,7 @@ xhr.open( 'GET', 'https://example.com?mail=ivan@biz.pro&password=odinodin' );
 xhr.send();
 ```
 
-    2. При параметре *method* *отличном от GET*, данные из объекта 
+*2.* При параметре *method* *отличном от GET*, данные из объекта 
     *data* должны передаваться через объект FormData. Например, листинг 
 
 ```javascript
@@ -89,7 +90,7 @@ const xhr = createRequest({
       mail: 'ivan@biz.pro',
       password: 'odinodin'
     },
-    method: 'POST'
+    method: 'POST',
   });
 ```
 
@@ -140,30 +141,29 @@ const xhr = createRequest({
   });
 ```
 
-4. withCredentials
+### 4. withCredentials
 
 У возвращаемого объекта всегда свойство *withCredentials* задано в *true*
 
 ## Entity
 
 Это базовый класс, от которого будут наследоваться классы 
-*Account* и *Transaction*.
+*Account* и *Transaction*. Необходим для организации взаимодействия между интерфейсом программы и сервером
+через функцию *createRequest*. Если пользователю необходимо получить, изменить или добавить данные, то
+происходит обращение к методам данного класса, которые делают запрос к серверу через функцию *createRequest*
+и полученный ответ возвращают пользователю.
 
 Содержит 4 статических метода: *list*, *get*, *remove* и *create*.
 Каждый из методов возвращает результат работы функции *createRequest*.
 
-Также *Entity* содержит 2 свойства
+Также *Entity* содержит одно свойства.
 
-### Свойства HOST и URL
-
-Параметр *HOST* содержит адрес приложения: 
-*https://bhj-diplom.letsdocode.ru*
+### Свойство URL
 
 Свойство *URL* содержит пустую строку.
 
 ```javascript
 console.log( Entity.URL ); // ''
-console.log( Entity.HOST ); // 'https://bhj-diplom.letsdocode.ru'
 ```
 
 ### list
@@ -184,7 +184,7 @@ Entity.list( data, function( err, response ) {
 *data* в данном случае - объект с параметрами, второй параметр - 
 *callback*-функция (функция обратного вызова). 
 
-Метод посылает *GET* запрос на адрес, заданный по формату *HOST + URL*.
+Метод посылает *GET* запрос на адрес, заданный *URL*.
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*)
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
@@ -216,7 +216,7 @@ class Entity {
 }
 ```
 
-Метод посылает *POST* запрос на адрес, заданный по формату *HOST + URL*.
+Метод посылает *POST* запрос на адрес, заданный *URL*.
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
@@ -226,8 +226,7 @@ class Entity {
 Метод *get* принимает __3__ аргумента: *id* и знакомые *data* и *callback*.
 *id* задаёт идентификатор записи 
 (например, идентификатор счёта или дохода/расхода; это станет актуально
-для классов *Account* и *Transaction*). Идентификатор *id* необходимо передавать
- в объекте *data*.
+для классов *Account* и *Transaction*).
 
 Пример вызова:
 
@@ -237,10 +236,13 @@ Entity.get( 21, { hello: 'kitty' }, function ( err, response ) {
 });
 ```
 
-Метод посылает *GET* запрос на адрес, заданный по формату *HOST + URL*. 
+Метод посылает *GET* запрос на адрес, заданный *URL*. 
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
+
+Пример получения определённого счёта: `/account/2`
+
 
 ### remove
 
@@ -268,7 +270,7 @@ class Entity {
 }
 ```
 
-Метод посылает *POST* запрос на адрес, заданный по формату *HOST + URL*.
+Метод посылает *POST* запрос на адрес, заданный *URL*.
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
@@ -284,7 +286,7 @@ class Entity {
 ## User
 
 В отличие от *Account* и *Transaction*, __не наследуется__ от *Entity*.
-Параметр *URL* равен */user*. Параметр *HOST* совпадает с *Entity.HOST*.
+Параметр *URL* равен */user*.
 
 ### User.setCurrent
 
@@ -363,7 +365,7 @@ console.log( current ); // undefined
 Например:
 
 ```javascript
-User.fetch({}, ( err, response ) => {
+User.fetch(User.current(), ( err, response ) => {
   console.log( response.user.id ); // 2
 });
 ```
@@ -382,18 +384,18 @@ User.fetch({}, ( err, response ) => {
 
 ```javascript
 console.log( User.current()); // undefined
-User.fetch({}, ( err, response ) => {
+User.fetch(User.current(), ( err, response ) => {
   console.log( response.user.name ); // Vlad
   console.log( User.current().name ); // Vlad
 });
 ```
 
-Если данных о пользователе нет (а *success* = *false*), необходимо удалить
+Если данных о пользователе нет (*success* = *false*), необходимо удалить
 запись об авторизации (для этого вызывайте метод *unsetCurrent*):
 
 ```javascript
 console.log( User.current()); // { id: 47, name: 'Vlad' }
-User.fetch({}, ( err, response ) => {
+User.fetch(User.current(), ( err, response ) => {
   // Оказалось, что пользователь уже больше не авторизован (истекла сессия)
   console.log( response.user ); // undefined
   console.log( response.success ); // false
@@ -401,7 +403,7 @@ User.fetch({}, ( err, response ) => {
 });
 ```
 
-Метод посылает *GET* запрос на адрес, заданный по формату *HOST + URL + '/current'*.
+Метод посылает *GET* запрос на адрес, заданный по формату *URL + '/current'*.
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
@@ -462,7 +464,7 @@ User.register( data, ( err, response ) => {
 После регистрации установите в случае успешного ответа полученного пользователя 
 с помощью метода *User.setCurrent*.
 
-Метод посылает *POST* запрос на адрес, заданный по формату *HOST + URL + '/register'*.
+Метод посылает *POST* запрос на адрес, заданный по формату *URL + '/register'*.
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
@@ -492,7 +494,7 @@ User.login( data, ( err, response ) => {
 ```json
 {
     "success": false,
-    "user": null
+    "error": "Пользователь c email ... и паролем ... не найден"
 }
 ```
 
@@ -504,8 +506,6 @@ User.login( data, ( err, response ) => {
     "user": {
         "name": "Lol",
         "email": "lol@lol.ru",
-        "updated_at": "2019-03-11 14:18:28",
-        "created_at": "2019-03-11 14:18:28",
         "id": 3
     }
 }
@@ -514,7 +514,7 @@ User.login( data, ( err, response ) => {
 После авторизации установите в случае успешного ответа полученного пользователя 
 с помощью метода *User.setCurrent*.
 
-Метод посылает *POST* запрос на адрес, заданный по формату *HOST + URL + '/login'*.
+Метод посылает *POST* запрос на адрес, заданный по формату *URL + '/login'*.
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
@@ -532,10 +532,69 @@ User.login( data, ( err, response ) => {
 }
 ```
 
-Метод посылает *POST* запрос на адрес, заданный по формату *HOST + URL + '/logout'*.
+Метод посылает *POST* запрос на адрес, заданный по формату *URL + '/logout'*.
 Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*. После успешного выхода необходимо вызвать метод User.unsetCurrent.
+
+## Какие ответы ожидать от хоста
+
+<details>
+
+<summary>Показать</summary>
+
+Ниже список, по каким адресам и что ожидает бекэнд, что возвращает в ответ и какие ошибки могут быть. 
+Если в коде есть ошибка и данные в localStorage обнуляются (тем самым обнуляются данные сессии) 
+вылетит ошибка: "Потеряны данные сессии". Как правило это связано с ошибкой в методе createRequest или когда в метод User.current()
+уходят пустые данные.
+
+Всегда проверяйте что отправляете на сервер и какой ответ получаете в панели разработчика.
+
+```javascript
+const data = {
+      name: 'new user',
+      email: '1@1.ru',
+      password: '1234'
+    }
+//error: "E-Mail адрес 1@1.ru уже существует."
+//success: false
+```
+
+*/user/current*: 
+
+Метод GET - *id*, *name* и *email* - вернет данные пользователя и *success = true*, в остальных случаях - *success = false* и 
+ошибку: "Необходима авторизация"
+
+*/user/login*:
+
+Метод POST - *email* и *password* - вернет данные пользователя и *success = true*, если такой учетной записи нет, то 
+вернет *success = false* и ошибку: "Пользователь c email ... и паролем ... не найден" 
+
+*/user/register*:
+
+Метод POST - *name*, *email* и *password* - вернет данные пользователя и *success = true*, если пользователь с таким email уже существует, 
+то вернет *success = false* и ошибку: "E-Mail адрес ... уже существует." 
+
+*/account*:
+
+Метод POST - *name* и *_method = PUT* - вернет *success = true*
+
+Метод POST - *_method = DELETE* и *id* - вернет *success = true*
+
+Метод GET - *id*, *name* и *email* - вернет данные по всем счетам и *success = true*
+
+Метод GET - *id* - вернет данные по конкретному счету
+
+*/transaction*:
+
+Метод GET - *account_id* - вернет список транзакций по конкретному счету и *success = true*
+
+Метод POST - *type*, *name*, *sum* и *account_id* - вернет *success = true*, если в поле сумма было передано не число
+то вернет ошибку "Недопустимые символы в поле Сумма" и *success = false*
+
+Метод POST - *_method = DELETE* и *id* - вернет *success = true*
+
+</details>
 
 ## Подсказки и советы
 
@@ -606,5 +665,15 @@ class User {
   }
 }
 ```
+
+### Проверка запросов к / ответов от сервера
+
+Для проверки запросов / ответов можно использовать *Инструменты разработчика* в браузере.
+Во вкладке *Network*, в левом окне, нужно выбрать файл, через который идет запрос на сервер.
+В правом окне в закладке *Headers* будут указаны параметры запроса. Метод, через который идет запрос, 
+а так же данные, отправленные на сервер. В закладках *Response* и *Preview* можно посмотреть полученный
+ответ от сервера. 
+
+![](../img/network.png)
 
 </details>

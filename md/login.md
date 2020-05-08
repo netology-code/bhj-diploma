@@ -3,7 +3,7 @@
 ## Общее описание
 
 Вам необходимо реализовать класс *LoginForm*
-(файл *js/ui/forms/LoginForm.js*)
+(файл *public/js/ui/forms/LoginForm.js*)
 
 *LoginForm* наследуется от класса *AsyncForm*. По факту необходимо 
 реализовать только метод *onSubmit*.

@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Диплом курса «Базовый JavaScript в браузере»</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+          integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="vendor/adminlte/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="vendor/adminlte/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body class="skin-blue sidebar-mini app">
+    <div class="wrapper">
+        <header class="main-header">
+            <a href="../../index2.html" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>M</b>M</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Money</b>Manager</span>
+            </a>
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle visible-xs" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="vendor/adminlte/img/robot.png" width="160" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p class="user-name">Alexander Pierce</p>
+                        <!-- Status -->
+                        <a href="#">
+                            <i class="fa fa-circle text-success"></i> Online
+                        </a>
+                    </div>
+                </div>
+
+                <div class="transactions-panel">
+                    <button class="btn btn-success btn-block create-income-button">
+                        <span class="fa fa-thumbs-o-up"></span>
+                        Доход
+                    </button>
+                    <button class="btn btn-danger btn-block create-expense-button">
+                        <span class="fa fa-thumbs-o-down"></span>
+                        Расход
+                    </button>
+                </div>
+
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">
+                        Авторизация
+                    </li>
+                    <li class="menu-item menu-item_login">
+                        <a href="#">
+                            <span>Вход</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item_register">
+                        <a href="#">
+                            <span>Регистрация</span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item_logout">
+                        <a href="#">
+                            <span>Выйти</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="sidebar-menu accounts-panel" data-widget="tree">
+                    <li class="header">
+                        Счета
+                        <div class="pull-right">
+                            <span class="create-account label label-success">
+                                <span class="fa fa-plus"></span>
+                                Новый счёт
+                            </span>
+                        </div>
+                    </li>
+                    <!--<li class="active account">
+                        <a href="#">
+                            <span>Сбербанк</span> /
+                            <span>2,396.30 ₽</span>
+                        </a>
+                    </li>
+                    <li class="account">
+                        <a href="#">
+                            <span>Альфа-банк</span> /
+                            <span>740.82 ₽</span>
+                        </a>
+                    </li>
+                    <li class="account">
+                        <a href="#">
+                            <span>QIWI</span> /
+                            <span>20.31 ₽</span>
+                        </a>
+                    </li>-->
+                </ul>
+            </section>
+        </aside>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    <span class="content-title">Название счёта</span>
+                    <small class="content-description">Счёт</small>
+                    <button class="btn btn-danger remove-account">
+                        <span class="fa fa-trash"></span>
+                        Удалить счёт
+                    </button>
+                </h1>
+            </section>
+            <section class="content">
+                <div class="transactions-content">
+                    <div class="transaction transaction_income row">
+                        <div class="col-md-7 transaction__details">
+                            <div class="transaction__icon">
+                                <span class="fa fa-money fa-2x"></span>
+                            </div>
+                            <div class="transaction__info">
+                                <h4 class="transaction__title">Зарплата</h4>
+                                <div class="transaction__date">1 января 2019 г. в 13:11</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="transaction__summ">
+                                21,700.00 <span class="currency">₽</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 transaction__controls">
+                            <button class="btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="transaction transaction_expense row">
+                        <div class="col-md-7 transaction__details">
+                            <div class="transaction__icon">
+                                <span class="fa fa-gift fa-2x"></span>
+                            </div>
+                            <div class="transaction__info">
+                                <h4 class="transaction__title">Цветы для любимой</h4>
+                                <div class="transaction__date">30 сентября 2018 г. в 18:26</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="transaction__summ">
+                                1250.00 <span class="currency">₽</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 transaction__controls">
+                            <button class="btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="modal fade in" id="modal-login">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Вход</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form" id="login-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="E-mail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Пароль" name="password" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary" form="login-form">Войти</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade in" id="modal-register">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Регистрация</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form" id="register-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Имя" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="E-mail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Пароль" name="password" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary" form="register-form">Зарегистрироваться</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade in" id="modal-new-account">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Новый аккаунт</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form" id="new-account-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Название" name="name" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary" form="new-account-form">Создать</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade in" id="modal-new-income">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Новый доход</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form" id="new-income-form">
+                        <input name="type" type="hidden" value="income">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Название" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Сумма" name="sum" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="income-accounts-list"></label>
+                            <select name="account_id" id="income-accounts-list" class="form-control accounts-select" required></select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary" form="new-income-form">Создать</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade in" id="modal-new-expense">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Новый расход</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form" id="new-expense-form">
+                        <input name="type" type="hidden" value="expense">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Название" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Сумма" name="sum" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expense-accounts-list"></label>
+                            <select name="account_id" id="expense-accounts-list" class="form-control accounts-select" required></select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary" form="new-expense-form">Создать</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+    <script src="../js/api/createRequest.js"></script>
+    <script src="../js/api/Entity.js"></script>
+    <script src="../js/api/Account.js"></script>
+    <script src="../js/api/Transaction.js"></script>
+    <script src="../js/api/User.js"></script>
+
+    <script src="../js/ui/Modal.js"></script>
+    <script src="../js/ui/widgets/AccountsWidget.js"></script>
+    <script src="../js/ui/widgets/TransactionsWidget.js"></script>
+    <script src="../js/ui/widgets/UserWidget.js"></script>
+
+    <script src="../js/ui/pages/TransactionsPage.js"></script>
+
+    <script src="../js/ui/forms/AsyncForm.js"></script>
+    <script src="../js/ui/forms/LoginForm.js"></script>
+    <script src="../js/ui/forms/RegisterForm.js"></script>
+    <script src="../js/ui/forms/CreateAccountForm.js"></script>
+    <script src="../js/ui/forms/CreateTransactionForm.js"></script>
+
+    <script src="../js/ui/Sidebar.js"></script>
+    <script src="../js/App.js"></script>
+
+    <script>
+      App.init();
+    </script>
+</body>
+</html>

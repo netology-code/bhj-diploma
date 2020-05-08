@@ -32,4 +32,4 @@
 При повторном нажатии на эту кнопку, классы необходимо убирать.
 
 Реализацию данной возможности добавьте 
-в метод *initToggleButton()* класса *Sidebar* (файл *js/ui/Sidebar.js*)
+в метод *initToggleButton()* класса *Sidebar* (файл *public/js/ui/Sidebar.js*)

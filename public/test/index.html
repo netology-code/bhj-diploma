@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="mocha"></div>
+
+  <script src="http://chaijs.com/chai.js"></script>
+  <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+
+  <script src="../js/api/createRequest.js"></script>
+  <script src="../js/api/Entity.js"></script>
+  <script src="../js/api/Account.js"></script>
+  <script src="../js/api/Transaction.js"></script>
+  <script src="../js/api/User.js"></script>
+
+  <script src="../js/ui/Modal.js"></script>
+  <script src="../js/ui/widgets/AccountsWidget.js"></script>
+  <script src="../js/ui/widgets/TransactionsWidget.js"></script>
+  <script src="../js/ui/widgets/UserWidget.js"></script>
+
+  <script src="../js/ui/pages/TransactionsPage.js"></script>
+
+  <script src="../js/ui/forms/AsyncForm.js"></script>
+  <script src="../js/ui/forms/LoginForm.js"></script>
+  <script src="../js/ui/forms/RegisterForm.js"></script>
+  <script src="../js/ui/forms/CreateAccountForm.js"></script>
+  <script src="../js/ui/forms/CreateTransactionForm.js"></script>
+
+  <script src="../js/ui/Sidebar.js"></script>
+  <script src="../js/App.js"></script>
+
+  <script>mocha.setup('bdd')</script>
+  <script src="spec/api/createRequest.spec.js"></script>
+  <script src="spec/api/Entity.spec.js"></script>
+  <script src="spec/api/Account.spec.js"></script>
+  <script src="spec/api/Transaction.spec.js"></script>
+  <script src="spec/api/User.spec.js"></script>
+  <script>
+    const expect = chai.expect;
+    mocha.run();
+  </script>
+
+
+</body>
+</html>
