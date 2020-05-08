@@ -3,7 +3,7 @@
 ## Общее описание
 
 Необходимо разработать страницу *TransactionsPage* 
-(файл js/ui/pages/TransactionsPage.js)
+(файл *public/js/ui/pages/TransactionsPage.js*)
 
 ## TransactionsPage
 

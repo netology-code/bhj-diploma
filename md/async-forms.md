@@ -6,15 +6,14 @@
 __асинхронно__, то есть без перезагрузки страницы.
 
 Для обработки таких форм создан класс *AsyncForm* 
-(файл *js/ui/forms/AsyncForm.js*).
+(файл *public/js/ui/forms/AsyncForm.js*).
 
 ## Общее описание
 
 Форма размечена в HTML следующим образом (пример):
 
 ```html
-<form class="form" id="new-account-form" action="https://bhj-diplom.letsdocode.ru/account">
-    <input name="_method" type="hidden" value="PUT">
+<form class="form" id="new-account-form">
     <div class="form-group">
         <input type="text" class="form-control" placeholder="Название" name="name" required>
     </div>
@@ -59,7 +58,7 @@ __асинхронно__, то есть без перезагрузки стра
 То есть для формы:
 
 ```html
-<form action="http://netology.ru" id="myform" method="POST">
+<form id="myform">
     <input type="hidden" name="hello" value="kitty">
     <input type="hidden" name="city" value="New York">
 </form>
@@ -98,8 +97,6 @@ console.log( asyncForm.getData());
 
 ```json
 {
-  "url": "содержимое атрибута action текущей формы",
-  "method": "содержимое атрибута method текущей формы",
   "data": "результат работы метода getData()"
 }
 ```
@@ -107,7 +104,7 @@ console.log( asyncForm.getData());
 То есть для примера:
 
 ```html
-<form action="http://netology.ru" id="myform" method="POST">
+<form id="myform">
     <input type="hidden" name="hello" value="kitty">
     <input type="hidden" name="city" value="New York">
 </form>
@@ -127,8 +124,6 @@ asyncForm.submit();
 /*
   Метод вызовет onSubmit, который выдаст такие данные
   {
-    url: 'http://netology.ru',
-    method: 'POST',
     data: {
       hello: 'kitty',
       city: 'New York'

@@ -10,10 +10,6 @@
   display: none;
 }
 
-.categories-panel {
-  display: none;
-}
-
 .menu-item_logout {
   display: none;
 }
@@ -21,7 +17,6 @@
 .app_user-logged .user-panel,
 .app_user-logged .transactions-panel,
 .app_user-logged .accounts-panel,
-.app_user-logged .categories-panel,
 .app_user-logged .menu-item_logout {
   display: block;
 }

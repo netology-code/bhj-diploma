@@ -5,9 +5,9 @@
 ## Общее описание
 
 Необходимо разработать виджет *TransactionsWidget* 
-(файл js/ui/widgets/TransactionsWidget.js), 
+(public/файл js/ui/widgets/TransactionsWidget.js), 
 а также форму *CreateTransactionForm* 
-(файл js/ui/forms/CreateTransactionForm.js)
+(файл *public/js/ui/forms/CreateTransactionForm.js*)
 
 ## TransactionsWidget
 
@@ -49,16 +49,16 @@
 ### registerEvents 
 
 1. При нажатии на кнопку «Доход» отображает всплывающее окно
-«Новый доход» (#modal-new-income) с помощью метода *App.getModal*
+«Новый доход» (*#modal-new-income*) с помощью метода *App.getModal*
 2. При нажатии на кнопку «Расход» отображает всплывающее окно
-«Новый доход» (#modal-new-expense) с помощью метода *App.getModal*
+«Новый доход» (*#modal-new-expense*) с помощью метода *App.getModal*
 
 ## CreateTransactionForm
 
 Форма *CreateTransactionForm* отправляет запрос на создание
 дохода или расхода. Обратите внимание, что в приложении
-есть два экземпляра этой формы - одна для дохода (#new-income-form)
-и одна для расхода (#new-expense-form).
+есть два экземпляра этой формы - одна для дохода (*#new-income-form*)
+и одна для расхода (*#new-expense-form*).
 
 Форма наследуется от *AsyncForm*.
 
@@ -74,8 +74,7 @@
                 <h4 class="modal-title">Новый расход</h4>
             </div>
             <div class="modal-body">
-                <form class="form" id="new-expense-form" action="https://bhj-diplom.letsdocode.ru/transaction/create">
-                    <input name="_method" type="hidden" value="PUT">
+                <form class="form" id="new-expense-form">
                     <input name="type" type="hidden" value="expense">
 
                     <div class="form-group">
@@ -144,7 +143,7 @@
 
 В случае, 
 если в приложении добавляется или удаляется счёт, необходимо
-обновить этот список (как это сделать, будет сделано отдельно).
+обновить этот список (как это сделать, будет указано отдельно).
 
 ### onSubmit
 
