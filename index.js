@@ -52,7 +52,7 @@ function setDefaultUser(database){
           { account_id: "3", created_at: "2018-01-15 13:27:02", id: "12", name: "Прибыль с магазина", sum: 300000, type: "income", user_id: "1" },
           { account_id: "3", created_at: "2018-01-15 13:27:02", id: "13", name: "Подарок сизого", sum: 20000, type: "income", user_id: "1" },
           { account_id: "3", created_at: "2017-09-15 13:27:02", id: "14", name: "На охрану", sum: 60000, type: "expense", user_id: "1" },
-          { account_id: "3", created_at: "2017-10-15 13:27:02", id: "15", name: "На бумер", sum: 300000, type: "expense", user_id: "1" }
+          { account_id: "3", created_at: "2017-10-15 13:27:02", id: "15", name: "На бумер", sum: 300000, type: "expense", user_id: "1" },
         ]
       }).write()
 }
