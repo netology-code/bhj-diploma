@@ -6,7 +6,7 @@
 
 Необходимо разработать форму *CreateAccountForm* и виджет 
 *AccountsWidget* 
-(файл *public/js/ui/widgets/AccountsWidget.js*). 
+(файлы *public/js/ui/forms/CreateAccountForm.js* и *public/js/ui/widgets/AccountsWidget.js*). 
 
 ## CreateAccountForm
 

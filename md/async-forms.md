@@ -92,12 +92,11 @@ console.log( asyncForm.getData());
 
 ### submit
 
-Получает данные формы из метода *getData* и передаёт в метод *onSubmit*
-объект вида:
+Получает данные формы из метода *getData* и передаёт в метод *onSubmit*:
 
 ```json
 {
-  "data": "результат работы метода getData()"
+  "результат работы метода getData()"
 }
 ```
 
@@ -112,8 +111,8 @@ console.log( asyncForm.getData());
 
 ```javascript
 class MyForm extends AsyncForm {
-  onSubmit( options ) {
-    console.log( options ); // выведет данные, которые передаст onsubmit
+  onSubmit( data ) {
+    console.log( data ); // выведет данные, которые передаст onsubmit
   }
 }
 
@@ -124,10 +123,8 @@ asyncForm.submit();
 /*
   Метод вызовет onSubmit, который выдаст такие данные
   {
-    data: {
-      hello: 'kitty',
-      city: 'New York'
-    }
+    hello: 'kitty',
+    city: 'New York'
   }
 */
 ```
