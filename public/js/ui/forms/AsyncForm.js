@@ -12,12 +12,12 @@ class AsyncForm {
    * Сохраняет переданный элемент и регистрирует события
    * через registerEvents()
    * */
-  constructor( element ) {
+  constructor(element) {
 
   }
 
   /**
-   * Необходимо запретить отправку формы. В момент отправки
+   * Необходимо запретить отправку формы и в момент отправки
    * вызывает метод submit()
    * */
   registerEvents() {
@@ -35,7 +35,7 @@ class AsyncForm {
 
   }
 
-  onSubmit( options ) {
+  onSubmit(options){
 
   }
 

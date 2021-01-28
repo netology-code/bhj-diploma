@@ -32,7 +32,7 @@ class User {
    * Получает информацию о текущем
    * авторизованном пользователе.
    * */
-  static fetch( data, callback = f => f ) {
+  static fetch(callback) {
 
   }
 
@@ -42,8 +42,19 @@ class User {
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
-  static login( data, callback = f => f ) {
-
+  static login( data, callback) {
+    createRequest({
+      url: this.URL + '/login',
+      method: 'POST',
+      responseType: 'json',
+      data,
+      callback: (err, response) => {
+        if (response && response.user) {
+          this.setCurrent(response.user);
+        }
+        callback(err, response);
+      }
+    });
   }
 
   /**
@@ -52,7 +63,7 @@ class User {
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
-  static register( data, callback = f => f ) {
+  static register( data, callback) {
 
   }
 
@@ -60,7 +71,7 @@ class User {
    * Производит выход из приложения. После успешного
    * выхода необходимо вызвать метод User.unsetCurrent
    * */
-  static logout( data, callback = f => f ) {
+  static logout( data, callback) {
 
   }
 }
