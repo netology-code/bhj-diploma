@@ -281,7 +281,7 @@ const user = {
   name: 'Vlad'
 };
 
-user.setCurrent( user );
+User.setCurrent( user );
 
 console.log( localStorage[ 'user' ]); // строка "{"id":12,"name":"Vlad"}
 ```
@@ -296,7 +296,7 @@ const user = {
   name: 'Vlad'
 };
 
-user.setCurrent( user );
+User.setCurrent( user );
 const current = User.current();
 
 console.log( current ); // объект { id: 12, name: 'Vlad' }
