@@ -21,12 +21,13 @@
 
 Функция является основным связующим звеном между клиентом и сервером. Через нее необходимо 
 организовать AJAX запросы на сервер используя API XMLHttpRequest.
+Функция *createRequest* ничего не возвращает.
 
 Пример вызова:
 
 ```javascript
 // здесь перечислены все возможные параметры для функции
-const xhr = createRequest({
+  createRequest({
     url: 'https://example.com', // адрес
     headers: { // произвольные заголовки, могут отсутствовать
       'Content-type': 'application/json' 
@@ -52,8 +53,7 @@ const xhr = createRequest({
 
 ### 1. XHR
 
-Константа *xhr* в примере выше содержит объект *XMLHttpRequest*, 
-функция *createRequest* ничего не возвращает.
+Константа *xhr* в примере выше содержит объект *XMLHttpRequest*.
 
 ### 2. Параметр data
 
@@ -61,7 +61,7 @@ const xhr = createRequest({
     в строке адреса. Например, листинг:
 
 ```javascript
-const xhr = createRequest({
+  createRequest({
     url: 'https://example.com',
     data: {
       mail: 'ivan@biz.pro',
@@ -84,7 +84,7 @@ xhr.send();
     *data* должны передаваться через объект FormData. Например, листинг 
 
 ```javascript
-const xhr = createRequest({
+  createRequest({
     url: 'https://example.com',
     data: {
       mail: 'ivan@biz.pro',
@@ -114,7 +114,7 @@ xhr.send( formData );
 
 ```javascript
 // при успешном выполнении
-const xhr = createRequest({
+  createRequest({
     url: 'https://example.com',
     method: 'GET',
     callback: ( err, response ) => {
@@ -132,7 +132,7 @@ const xhr = createRequest({
 
 ```javascript
 // при ошибке
-const xhr = createRequest({
+  createRequest({
     url: 'https://example.com',
     method: 'GET',
     callback: ( err, response ) => {
