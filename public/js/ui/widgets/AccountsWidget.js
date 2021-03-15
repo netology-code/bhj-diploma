@@ -2,6 +2,7 @@
  * Класс AccountsWidget управляет блоком
  * отображения счетов в боковой колонке
  * */
+
 class AccountsWidget {
   /**
    * Устанавливает текущий элемент в свойство element
@@ -66,7 +67,7 @@ class AccountsWidget {
    * отображения в боковой колонке.
    * item - объект с данными о счёте
    * */
-  getAccountHTML( item ) {
+  getAccountHTML(item){
 
   }
 
@@ -76,7 +77,7 @@ class AccountsWidget {
    * AccountsWidget.getAccountHTML HTML-код элемента
    * и добавляет его внутрь элемента виджета
    * */
-  renderItem( item ) {
+  renderItem(data){
 
   }
 }

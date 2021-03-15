@@ -21,12 +21,13 @@
 
 Функция является основным связующим звеном между клиентом и сервером. Через нее необходимо 
 организовать AJAX запросы на сервер используя API XMLHttpRequest.
+Функция *createRequest* ничего не возвращает.
 
 Пример вызова:
 
 ```javascript
 // здесь перечислены все возможные параметры для функции
-const xhr = createRequest({
+  createRequest({
     url: 'https://example.com', // адрес
     headers: { // произвольные заголовки, могут отсутствовать
       'Content-type': 'application/json' 
@@ -50,10 +51,9 @@ const xhr = createRequest({
   });
 ```
 
-### 1. Возвращает XHR
+### 1. XHR
 
-Константа *xhr* в данном примере содержит объект *XMLHttpRequest*, 
-который возвращает функция *createRequest*.
+Константа *xhr* в примере выше содержит объект *XMLHttpRequest*.
 
 ### 2. Параметр data
 
@@ -61,7 +61,7 @@ const xhr = createRequest({
     в строке адреса. Например, листинг:
 
 ```javascript
-const xhr = createRequest({
+  createRequest({
     url: 'https://example.com',
     data: {
       mail: 'ivan@biz.pro',
@@ -84,7 +84,7 @@ xhr.send();
     *data* должны передаваться через объект FormData. Например, листинг 
 
 ```javascript
-const xhr = createRequest({
+  createRequest({
     url: 'https://example.com',
     data: {
       mail: 'ivan@biz.pro',
@@ -114,7 +114,7 @@ xhr.send( formData );
 
 ```javascript
 // при успешном выполнении
-const xhr = createRequest({
+  createRequest({
     url: 'https://example.com',
     method: 'GET',
     callback: ( err, response ) => {
@@ -132,7 +132,7 @@ const xhr = createRequest({
 
 ```javascript
 // при ошибке
-const xhr = createRequest({
+  createRequest({
     url: 'https://example.com',
     method: 'GET',
     callback: ( err, response ) => {
@@ -153,7 +153,7 @@ const xhr = createRequest({
 происходит обращение к методам данного класса, которые делают запрос к серверу через функцию *createRequest*
 и полученный ответ возвращают пользователю.
 
-Содержит 4 статических метода: *list*, *get*, *remove* и *create*.
+Содержит 3 статических метода: *list*, *remove* и *create*.
 Каждый из методов возвращает результат работы функции *createRequest*.
 
 Также *Entity* содержит одно свойства.
@@ -185,16 +185,13 @@ Entity.list( data, function( err, response ) {
 *callback*-функция (функция обратного вызова). 
 
 Метод посылает *GET* запрос на адрес, заданный *URL*.
-Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*)
+Метод запускает выполнение функции *createRequest*.
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
 
 ### create
 
 Метод *create* принимает 2 аргумента, как и *list*: *data* и *callback*.
-
-К данным, передаваемых в параметре *data*, необходимо добавить 
-свойство *_method* со значением *PUT*:
 
 ```javascript
 const data = {
@@ -205,50 +202,18 @@ class Entity {
 // ... внутри метода create
   static create( data, callback ) {
     console.log( data ); // { mail: 'ivan@biz.pro' }
-    // ... добавляем _method к data
-    console.log( data ); // { mail: 'ivan@biz.pro', _method: 'PUT' }
-    // ...
-    /* 
-      Желательно оригинальный объект data не менять.
-      Пользуйтесь принципом иммутабельности
-    */
   }
 }
 ```
 
-Метод посылает *POST* запрос на адрес, заданный *URL*.
-Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
+Метод посылает *PUT* запрос на адрес, заданный *URL*.
+Метод запускает выполнение функции *createRequest*.
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
-
-### get
-
-Метод *get* принимает __3__ аргумента: *id* и знакомые *data* и *callback*.
-*id* задаёт идентификатор записи 
-(например, идентификатор счёта или дохода/расхода; это станет актуально
-для классов *Account* и *Transaction*).
-
-Пример вызова:
-
-```javascript
-Entity.get( 21, { hello: 'kitty' }, function ( err, response ) {
-  // ... получили ответ
-});
-```
-
-Метод посылает *GET* запрос на адрес, заданный *URL*. 
-Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
-Параметр *responseType* в вызываемой внутри функции *createRequest* задан
-как *json*.
-
-Пример получения определённого счёта: `/account/2`
-
 
 ### remove
 
-Метод *remove* принимает __3__ аргумента: *id*, *data* и *callback*.
-К данным, передаваемых в параметре *data*, необходимо добавить идентификатор *id* и
-свойство *_method* со значением *DELETE*:
+Метод *remove* принимает __2__ аргумента: *data* и *callback*.
 
 ```javascript
 const data = {
@@ -257,27 +222,43 @@ const data = {
 
 class Entity {
 // ... внутри метода create
-  static remove( id, data, callback ) {
+  static remove( data, callback ) {
     console.log( data ); // { mail: 'ivan@biz.pro' }
-    // ... добавляем id и _method к data
-    console.log( data ); // { mail: 'ivan@biz.pro', _method: 'DELETE', id: 21 }
-    // ...
-    /* 
-      Желательно оригинальный объект data не менять.
-      Пользуйтесь принципом иммутабельности
-    */
   }
 }
 ```
 
-Метод посылает *POST* запрос на адрес, заданный *URL*.
-Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
+Метод посылает *DELETE* запрос на адрес, заданный *URL*.
+Метод запускает выполнение функции *createRequest*.
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
 
 ## Account
 
-Наследует все свойства и методы от *Entity*. Параметр *URL* равен */account*
+Наследует все свойства и методы от *Entity*. Параметр *URL* равен */account*.
+
+Содержит 1 статический метод: *get*.
+Метод запускает функцию *createRequest*.
+
+### get
+
+Метод *get* принимает __2__ аргумента: *id* и *callback*.
+*id* задаёт идентификатор записи.
+
+Пример вызова:
+
+```javascript
+Entity.get( 21, function ( err, response ) {
+  // ... получили ответ
+});
+```
+
+Метод посылает *GET* запрос на адрес, заданный *URL*. 
+Метод запускает выполнение функции *createRequest*.
+Параметр *responseType* в вызываемой внутри функции *createRequest* задан
+как *json*.
+
+Пример получения определённого счёта: `/account/2`
 
 ## Transaction
 
@@ -300,7 +281,7 @@ const user = {
   name: 'Vlad'
 };
 
-user.setCurrent( user );
+User.setCurrent( user );
 
 console.log( localStorage[ 'user' ]); // строка "{"id":12,"name":"Vlad"}
 ```
@@ -315,7 +296,7 @@ const user = {
   name: 'Vlad'
 };
 
-user.setCurrent( user );
+User.setCurrent( user );
 const current = User.current();
 
 console.log( current ); // объект { id: 12, name: 'Vlad' }
@@ -346,7 +327,7 @@ console.log( current ); // undefined
 Извлекает данные о текущем авторизованном пользователе. Пользуется
 функцией *createRequest*.
 
-Метод *fetch* принимает 2 аргумента: *data* и *callback*.
+Метод *fetch* принимает 1 аргумент: *callback*.
 В качестве ответа в *callback* будет объект вида:
 
 ```json
@@ -365,7 +346,7 @@ console.log( current ); // undefined
 Например:
 
 ```javascript
-User.fetch(User.current(), ( err, response ) => {
+User.fetch(( err, response ) => {
   console.log( response.user.id ); // 2
 });
 ```
@@ -384,7 +365,7 @@ User.fetch(User.current(), ( err, response ) => {
 
 ```javascript
 console.log( User.current()); // undefined
-User.fetch(User.current(), ( err, response ) => {
+User.fetch(( err, response ) => {
   console.log( response.user.name ); // Vlad
   console.log( User.current().name ); // Vlad
 });
@@ -395,7 +376,7 @@ User.fetch(User.current(), ( err, response ) => {
 
 ```javascript
 console.log( User.current()); // { id: 47, name: 'Vlad' }
-User.fetch(User.current(), ( err, response ) => {
+User.fetch(( err, response ) => {
   // Оказалось, что пользователь уже больше не авторизован (истекла сессия)
   console.log( response.user ); // undefined
   console.log( response.success ); // false
@@ -404,7 +385,7 @@ User.fetch(User.current(), ( err, response ) => {
 ```
 
 Метод посылает *GET* запрос на адрес, заданный по формату *URL + '/current'*.
-Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
+Метод запускает выполнение функции *createRequest*.
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
 
@@ -465,7 +446,7 @@ User.register( data, ( err, response ) => {
 с помощью метода *User.setCurrent*.
 
 Метод посылает *POST* запрос на адрес, заданный по формату *URL + '/register'*.
-Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
+Метод запускает выполнение функции *createRequest*.
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
 
@@ -515,7 +496,7 @@ User.login( data, ( err, response ) => {
 с помощью метода *User.setCurrent*.
 
 Метод посылает *POST* запрос на адрес, заданный по формату *URL + '/login'*.
-Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
+Метод запускает выполнение функции *createRequest*.
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*.
 
@@ -533,7 +514,7 @@ User.login( data, ( err, response ) => {
 ```
 
 Метод посылает *POST* запрос на адрес, заданный по формату *URL + '/logout'*.
-Метод возвращает объект *XMLHttpRequest* (результат вызова *createRequest*).
+Метод запускает выполнение функции *createRequest*.
 Параметр *responseType* в вызываемой внутри функции *createRequest* задан
 как *json*. После успешного выхода необходимо вызвать метод User.unsetCurrent.
 
@@ -562,7 +543,7 @@ const data = {
 
 */user/current*: 
 
-Метод GET - *id*, *name* и *email* - вернет данные пользователя и *success = true*, в остальных случаях - *success = false* и 
+Метод GET - вернет данные пользователя и *success = true*, в остальных случаях - *success = false* и 
 ошибку: "Необходима авторизация"
 
 */user/login*:
@@ -577,9 +558,9 @@ const data = {
 
 */account*:
 
-Метод POST - *name* и *_method = PUT* - вернет *success = true*
+Метод PUT - *name* - вернет *success = true*
 
-Метод POST - *_method = DELETE* и *id* - вернет *success = true*
+Метод DELETE - *id* - вернет *success = true*
 
 Метод GET - *id*, *name* и *email* - вернет данные по всем счетам и *success = true*
 
@@ -592,7 +573,7 @@ const data = {
 Метод POST - *type*, *name*, *sum* и *account_id* - вернет *success = true*, если в поле сумма было передано не число
 то вернет ошибку "Недопустимые символы в поле Сумма" и *success = false*
 
-Метод POST - *_method = DELETE* и *id* - вернет *success = true*
+Метод DELETE - *id* - вернет *success = true*
 
 </details>
 
@@ -601,20 +582,6 @@ const data = {
 <details>
 
 <summary>Показать</summary>
-
-### Дополнительные свойства. Иммутабельность
-
-Для добавления дополнительных свойств к объекту *data* в методах
-*Entity.create* и *Entity.remove* используйте метод 
-[Object.assign](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/assign):
-
-```javascript
-const data = {
-      hello: 'kitty'
-    },
-    modifiedData = Object.assign({ _method: 'PUT' }, data );
-console.log( modifiedData ); // { hello: 'kitty', _method: 'PUT' }
-```
 
 ### Ошибки в createRequest
 
@@ -647,7 +614,7 @@ const createRequest = options => {
 
 ```javascript
 class User {
-  static fetch( data, callback ) {
+  static fetch( callback ) {
     // ...
     const xhr = createRequest({
       // ...
