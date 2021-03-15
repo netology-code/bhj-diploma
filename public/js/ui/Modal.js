@@ -19,6 +19,7 @@ class Modal {
     this.element = element;
     this.registerEvents();
   }
+
   }
 
   /**
@@ -43,6 +44,7 @@ class Modal {
    * Удаляет обработчики событий
    * */
   unregisterEvents() {
+
 
   }
   /**

@@ -36,7 +36,8 @@ class TransactionsPage {
    * Если пользователь согласен удалить счёт, вызовите
    * Account.remove, а также TransactionsPage.clear с
    * пустыми данными для того, чтобы очистить страницу.
-   * По успешному удалению необходимо вызвать метод App.update()
+   * По успешному удалению необходимо вызвать метод App.updateWidgets(),
+   * либо обновляйте только виджет со счетами
    * для обновления приложения
    * */
   removeAccount() {
@@ -46,7 +47,8 @@ class TransactionsPage {
   /**
    * Удаляет транзакцию (доход или расход). Требует
    * подтверждеия действия (с помощью confirm()).
-   * По удалению транзакции вызовите метод App.update()
+   * По удалению транзакции вызовите метод App.update(),
+   * либо обновляйте текущую страницу (метод update) и виджет со счетами
    * */
   removeTransaction( id ) {
 
@@ -58,7 +60,7 @@ class TransactionsPage {
    * Получает список Transaction.list и полученные данные передаёт
    * в TransactionsPage.renderTransactions()
    * */
-  render( options ) {
+  render(options){
 
   }
 
@@ -74,7 +76,7 @@ class TransactionsPage {
   /**
    * Устанавливает заголовок в элемент .content-title
    * */
-  renderTitle( name ) {
+  renderTitle(name){
 
   }
 
@@ -82,7 +84,7 @@ class TransactionsPage {
    * Форматирует дату в формате 2019-03-10 03:20:41 (строка)
    * в формат «10 марта 2019 г. в 03:20»
    * */
-  formatDate( date ) {
+  formatDate(date){
 
   }
 
@@ -90,7 +92,7 @@ class TransactionsPage {
    * Формирует HTML-код транзакции (дохода или расхода).
    * item - объект с информацией о транзакции
    * */
-  getTransactionHTML( item ) {
+  getTransactionHTML(item){
 
   }
 
@@ -98,7 +100,7 @@ class TransactionsPage {
    * Отрисовывает список транзакций на странице
    * используя getTransactionHTML
    * */
-  renderTransactions( data ) {
+  renderTransactions(data){
 
   }
 }

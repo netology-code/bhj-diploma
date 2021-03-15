@@ -4,10 +4,8 @@
 
 ## Общее описание
 
-Необходимо разработать виджет *TransactionsWidget* 
-(public/файл js/ui/widgets/TransactionsWidget.js), 
-а также форму *CreateTransactionForm* 
-(файл *public/js/ui/forms/CreateTransactionForm.js*)
+Необходимо разработать виджет *TransactionsWidget*, а также форму *CreateTransactionForm* 
+(файлы *public/js/ui/widgets/TransactionsWidget.js* и *public/js/ui/forms/CreateTransactionForm.js*)
 
 ## TransactionsWidget
 

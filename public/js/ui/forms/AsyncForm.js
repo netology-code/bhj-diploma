@@ -19,10 +19,11 @@ class AsyncForm {
       this.element = element;
       this.registerEvents();
     }
+
   }
 
   /**
-   * Необходимо запретить отправку формы. В момент отправки
+   * Необходимо запретить отправку формы и в момент отправки
    * вызывает метод submit()
    * */
   registerEvents() {
@@ -54,7 +55,7 @@ class AsyncForm {
 
   }
 
-  onSubmit( options ) {
+  onSubmit(options){
 
   }
 
