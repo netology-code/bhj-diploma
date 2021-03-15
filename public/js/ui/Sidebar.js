@@ -18,7 +18,13 @@ class Sidebar {
    * при нажатии на кнопку .sidebar-toggle
    * */
   static initToggleButton() {
+   let sidebar = document.querySelector('.sidebar-mini')
+    let body = document.querySelector('body')
+    sidebar.addEventListener('click', ()=> {
+      body.classList.toggle('sidebar-open')
+      body.classList.toggle('sidebar-collapse')
 
+    })
   }
 
   /**
@@ -29,6 +35,7 @@ class Sidebar {
    * выходу устанавливает App.setState( 'init' )
    * */
   static initAuthLinks() {
+
 
   }
 
