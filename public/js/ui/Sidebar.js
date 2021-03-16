@@ -18,7 +18,7 @@ class Sidebar {
    * при нажатии на кнопку .sidebar-toggle
    * */
   static initToggleButton() {
-   let sidebar = document.querySelector('.sidebar-mini')
+   let sidebar = document.querySelector('.sidebar-toggle')
     let body = document.querySelector('body')
     sidebar.addEventListener('click', ()=> {
       body.classList.toggle('sidebar-open')

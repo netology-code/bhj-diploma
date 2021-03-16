@@ -27,11 +27,15 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-    let submit = Array.from(this.element.querySelectorAll('[type="submit"]'));
-    submit.forEach(elem => elem.addEventListener('click', () => {
-        Event.preventDefault();
-        this.submit();}))
-  }
+    const formLogin = document.getElementById('modal-login');
+    const formRegister = document.getElementById('modal-register');
+    const forms = [];
+    forms.push(formLogin, formRegister);
+    forms.forEach(elem => elem.addEventListener('submit', event => {
+      event.preventDefault();
+      this.submit();
+    } ))
+    }
 
   /**
    * Преобразует данные формы в объект вида
@@ -41,8 +45,10 @@ class AsyncForm {
    * }
    * */
   getData() {
-    const form = this.element.getElementById('modal-register');
-    const formData = new FormData(form);
+    console.log(this.element)
+    // const loginForm = document.getElementById('login-form');
+    // const registerForm = document.getElementById('register-form');
+    let formData = new FormData(this.element);
     const entries = formData.entries();
     let formObject = {}
     for (let item of entries) {
@@ -64,7 +70,7 @@ class AsyncForm {
    * данные, полученные из метода getData()
    * */
   submit() {
-  this.onSubmit(this.element.getData());
+  this.onSubmit(this.getData());
 
 
   }
