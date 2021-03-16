@@ -2,7 +2,7 @@
  * Класс CreateTransactionForm управляет формой
  * создания новой транзакции
  * */
-class CreateTransactionForm extends AsyncForm {
+class CreateTransactionForm {
   /**
    * Вызывает родительский конструктор и
    * метод renderAccountsList
