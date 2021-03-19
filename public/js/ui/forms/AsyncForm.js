@@ -46,6 +46,7 @@ class AsyncForm {
    * */
   getData() {
     console.log(this.element)
+    //for commit
     // const loginForm = document.getElementById('login-form');
     // const registerForm = document.getElementById('register-form');
     let formData = new FormData(this.element);
@@ -53,8 +54,8 @@ class AsyncForm {
     let formObject = {}
     for (let item of entries) {
       const key = item[0];
-      const value = item[1];
-      formObject[key] = value;
+      let values = item[1];
+      formObject[key] = values;
     }
     console.log(formObject);
     return formObject;
