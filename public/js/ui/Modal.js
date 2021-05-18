@@ -12,7 +12,6 @@ class Modal {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
-    console.log('constructor')
   if (element === undefined) {
     throw new Error('Element is empty');
   } else  {
@@ -37,7 +36,6 @@ class Modal {
    * Закрывает текущее окно (Modal.close())
    * */
   onClose( e ) {
-    console.log('onClose')
   this.close(e)
   }
   /**
@@ -52,7 +50,6 @@ class Modal {
    * со значением «block»
    * */
   open() {
-    console.log('open')
     this.element.style.display = "block";
 
   }

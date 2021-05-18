@@ -12,6 +12,12 @@ class UserWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor(element){
+    if (element === undefined) {
+      throw new Error('Element is empty');
+    } else {
+      this.element = element;
+
+    }
 
   }
 
@@ -23,6 +29,9 @@ class UserWidget {
    * авторизованного пользователя
    * */
   update(){
+    const user = JSON.parse(User.current());
+    const userName = this.element.querySelector('.user-name');
+    userName.innerHTML = user.name;
 
   }
 }

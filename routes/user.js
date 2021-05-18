@@ -14,6 +14,7 @@ router.post("/register",upload.none(), function(request, response) {
     const db = low(new FileSync('db.json'));// получение БД
     //получение параметров из тела запроса
     const { name, email, password } = request.body;
+
     //формирование ошибки (не обязательна, но желательна т.к. валидация есть на UI)
     error = "";
     if(name === "")
@@ -24,7 +25,7 @@ router.post("/register",upload.none(), function(request, response) {
 
     if(password === "")
         error += 'Поле Пароль обязательно для заполнения.';
-    
+
     //если ошибка сформирована...
     if(error !== "")
         response.json({success: false, error});//отправляем ошибку

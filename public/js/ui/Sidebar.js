@@ -38,6 +38,15 @@ class Sidebar {
       let loginButton = document.querySelector('.menu-item_login');
       loginButton.onclick = () => {App.getModal('login').open()};
       let registerButton = document.querySelector('.menu-item_register');
-      registerButton.onclick = () => (App.getModal('register').open())
+      registerButton.onclick = () => (App.getModal('register').open());
+      let quitButton = document.querySelector('.menu-item_logout');
+      quitButton.onclick = () => (User.logout( JSON.stringify(User.current()),(err, response) => {
+          if (err === null) {
+              App.setState( 'init' );
+          } else {
+              alert('Лягушка')
+          }
+      }))
+
   }
 }

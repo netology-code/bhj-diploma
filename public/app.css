@@ -13,6 +13,9 @@
 .categories-panel {
   display: none;
 }
+.account {
+  color: #f6f6f6;
+}
 
 .menu-item_logout {
   display: none;
