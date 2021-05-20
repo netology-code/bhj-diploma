@@ -66,13 +66,10 @@ class Entity {
     })
   }
   static removeAccount(data, callback ) {
-    const formData = new FormData();
-    formData.append(data)
     createRequest({
-      url: this.URL,
+      url: this.URL + data,
       method: 'DELETE',
       responseType: 'json',
-      formData,
       callback: (err, response) => {
         callback(err, response);
       }

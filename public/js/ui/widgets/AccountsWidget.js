@@ -93,6 +93,8 @@ class AccountsWidget {
         elem.classList.remove('active')
       }
     })
+    const account_id = element.getAttribute('data-id')
+    App.showPage('transactions', {'account_id': account_id})
 
   }
 
@@ -102,7 +104,8 @@ class AccountsWidget {
    * item - объект с данными о счёте
    * */
   getAccountHTML(item){
-    const elem = `<li class="account" data-id=` + String(item.id) + ` <a href="#">
+    const elem = `<li class="account" data-id=` + String(item.id) +`>` +
+        `<a href="#">
         <span>` + item.name + `</span> 
         <span>` + item.sum + `₽</span>
       </a>

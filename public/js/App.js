@@ -136,8 +136,6 @@ class App {
    * */
   static showPage(pageName, options) {
     const page = this.getPage(pageName);
-    console.log(options)
-
     page.render(options);
   }
 
