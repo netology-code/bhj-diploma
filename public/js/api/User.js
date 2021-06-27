@@ -42,7 +42,7 @@ class User {
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
-  static login( data, callback) {
+  static login(data, callback) {
     createRequest({
       url: this.URL + '/login',
       method: 'POST',
@@ -63,7 +63,7 @@ class User {
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
-  static register( data, callback) {
+  static register(data, callback) {
 
   }
 
@@ -71,7 +71,7 @@ class User {
    * Производит выход из приложения. После успешного
    * выхода необходимо вызвать метод User.unsetCurrent
    * */
-  static logout( data, callback) {
+  static logout(callback) {
 
   }
 }
