@@ -18,12 +18,12 @@ class Sidebar {
    * при нажатии на кнопку .sidebar-toggle
    * */
   static initToggleButton() {
-    const sidebarToggle = document.querySelector( '.sidebar-toggle' ),
-    const sidebarMini = document.querySelector( '.sidebar-mini' );
+    const toggle = document.querySelector('.sidebar-toggle'),
+    const sidebar = document.querySelector('.sidebar-mini');
 
-    sidebarToggle.addEventListener( 'click', () => {
-      sidebarMini.classList.toggle( 'sidebar-open' );
-      sidebarMini.classList.toggle( 'sidebar-collapse' );
+    toggle.addEventListener('click', () => {
+      sidebar.classList.toggle('sidebar-open');
+      sidebar.classList.toggle('sidebar-collapse');
     });
   }
 
@@ -32,26 +32,26 @@ class Sidebar {
    * (через найденное в App.getModal)
    * При нажатии на кнопку регастрации показывает окно регистрации
    * При нажатии на кнопку выхода вызывает User.logout и по успешному
-   * выходу устанавливает App.setState( 'init' )
+   * выходу устанавливает App.setState('init')
    * */
   static initAuthLinks() {
-    const loginLink = document.querySelector( '.menu-item_login a' );
-    const registerLink = document.querySelector( '.menu-item_register a' );
-    const logoutLink = document.querySelector( '.menu-item_logout a' );
-    const loginModal = App.getModal( 'login' );
-    const registerModal = App.getModal( 'register' );
+    const loginLink = document.querySelector('.menu-item_login a');
+    const registerLink = document.querySelector('.menu-item_register a');
+    const logoutLink = document.querySelector('.menu-item_logout a');
+    const loginModal = App.getModal('login');
+    const registerModal = App.getModal('register');
 
-    loginLink.addEventListener( 'click', () => loginModal.open());
+    loginLink.addEventListener('click', () => loginModal.open());
 
-    registerLink.addEventListener( 'click', () => registerModal.open());
+    registerLink.addEventListener('click', () => registerModal.open());
     
-    logoutLink.addEventListener( 'click', () =>
-      User.logout({}, ( err, response ) => {
-        if ( response && response.success ) {
-          App.setState( 'init' );
+    logoutLink.addEventListener('click', () =>
+      User.logout({}, (err, response) => {
+        if (response && response.success) {
+          App.setState('init');
         }
       })
-    );
+   );
   }
 
 }

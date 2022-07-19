@@ -12,8 +12,8 @@ class Modal {
    * необходимо выкинуть ошибку.
    * */
   constructor(element){
-    if ( !element ) {
-      throw new Error( 'Элемент не существует' );
+    if (!element) {
+      throw new Error('Элемент не существует');
     }
     this.element = element;
     this.registerEvents();
@@ -25,8 +25,8 @@ class Modal {
    * (с помощью метода Modal.onClose)
    * */
   registerEvents() {
-    this.onClose = this.onClose.bind( this );
-    this.element.addEventListener( 'click', this.onClose );
+    this.onClose = this.onClose.bind(this);
+    this.element.addEventListener('click', this.onClose);
     return this;
   }
 
@@ -35,8 +35,8 @@ class Modal {
    * Закрывает текущее окно (Modal.close())
    * */
   onClose(e) {
-   const target = e.target.closest( '[data-dismiss="modal"]' );
-    if ( target ) {
+   const target = e.target.closest('[data-dismiss="modal"]');
+    if (target) {
       e.preventDefault();
       return this.close();
     }
